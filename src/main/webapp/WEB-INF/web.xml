@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<web-app xmlns="http://java.sun.com/xml/ns/j2ee" 
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+	version="2.4" 
+	xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee http://java.sun.com/xml/ns/j2ee/web-app_2_4.xsd">
+
+  <display-name>KDemo</display-name>
+  
+   <!-- Enable escaping of form submission contents -->
+    <context-param>
+        <param-name>defaultHtmlEscape</param-name>
+        <param-value>true</param-value>
+    </context-param>
+    
+    <context-param>
+		<param-name>contextConfigLocation</param-name>
+		<param-value>
+			classpath*:META-INF/spring/applicationContext*.xml
+			classpath*:META-INF/demo-security.xml
+		</param-value>
+	</context-param>
+	
+	<!-- 
+  		By default, ContextLoaderListener loads the bean configuration file
+		/WEB-INF/applicationContext.xml, but you can specify your own in the 
+		context parameter contextConfigLocation.
+   	-->
+  	<listener>
+  		<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+	</listener>
+	
+	<!-- 
+		By default DispatcherServlet loads a file of the named <servlet-name>-config.xml
+		In this case it would load kdemo-config.xml except that we are override this 
+		default by setting it in the init-param
+	 -->
+	<servlet>
+    	<servlet-name>kdemo</servlet-name>
+    	<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+    	<init-param>
+    		<param-name>contextConfigLocation</param-name>
+    		<param-value>/WEB-INF/spring/webmvc-config.xml</param-value>
+    	</init-param>
+    	<load-on-startup>1</load-on-startup>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>kdemo</servlet-name>
+        <url-pattern>/</url-pattern>
+    </servlet-mapping>
+    <!-- 
+    	This is an alternative to using the mvc:resources tag in the spring configuration file.
+    	This prevents request for images (static resource) from going to the Dispatch servlet
+    	which will just throw it out. It will go the the Dispatch Servlet because we are mapping
+    	a slash (/) without any file extension.
+	<servlet-mapping>
+		<servlet-name>default</servlet-name>
+		<url-pattern>*.jpg</url-pattern>
+	</servlet-mapping>
+	 -->
+
+	<!-- 
+		The responsibility of DelegatingFilterProxy is simply to delegate HTTP request 
+		filtering to a Spring bean. 
+		By default, it delegates to a bean whose name is the same as its <filter-name> 
+		property.
+		But you can override the bean name in its targetBeanName init parameter.
+		
+		We use springSecurityFilterChain as the Servlet Filter name as Spring will
+		automatically configure a filter chain with the name springSecurityFilterChain
+		when web security is enabled
+	 -->
+	<filter>
+		<filter-name>springSecurityFilterChain</filter-name>
+		<filter-class>org.springframework.web.filter.DelegatingFilterProxy</filter-class>
+	</filter>
+	<filter-mapping>
+		<filter-name>springSecurityFilterChain</filter-name>
+		<url-pattern>/*</url-pattern>
+	</filter-mapping>
+
+    <session-config>
+        <session-timeout>2</session-timeout>
+    </session-config>
+</web-app>

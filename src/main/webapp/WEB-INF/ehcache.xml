@@ -1,0 +1,24 @@
+<ehcache>
+	<!-- 
+		NOTES:
+		This Ehcache configuration file defines two types of cache configurations. One is for the default, and
+		the other is for caching user details. If the user cache configuration is used, a cache instance will cache
+		the details of at most 100 users in memory. The cached users will overflow to disk when this limit is
+		exceeded. A cached user will expire if it has been idle for 10 minutes or live for 1 hour after its creation.
+	 -->
+	<diskStore path="java.io.tmpdir" />
+	<defaultCache 
+		maxElementsInMemory="1000" 
+		eternal="false"
+		timeToIdleSeconds="120" 
+		timeToLiveSeconds="120" 
+		overflowToDisk="true" />
+		
+	<cache 
+		name="userCache" 
+		maxElementsInMemory="100" 
+		eternal="false"
+		timeToIdleSeconds="600" 
+		timeToLiveSeconds="3600" 
+		overflowToDisk="true" />
+</ehcache>

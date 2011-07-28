@@ -1,0 +1,163 @@
+<beans:beans xmlns="http://www.springframework.org/schema/security"
+	xmlns:beans="http://www.springframework.org/schema/beans" 
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+http://www.springframework.org/schema/security
+http://www.springframework.org/schema/security/spring-security-3.0.xsd">
+
+	<!-- 
+		NOTE:Unlike other configuration files, the default name space is 'security' instead
+		of 'beans'. Therefore, when you declare normal Spring beans in this file, you have 
+		to include the beans prefix for the <bean> and
+		<property> elements.
+	 -->
+	 
+	 <!-- 
+	 	The <http auto-config="true"> element automatically configures the basic security 
+	 	services that a typical web application needs.
+	  -->
+	  
+	 
+	   
+	   <!-- 
+	   		With auto-config enabled, Spring will register HTTP Basic Authentication and 
+	   		Form-Based Login services.
+	   		
+	   		With HTTP Basic Basic authentication credentials presented in HTTP request headers
+	   		are processed. A browser will typically display a login dialog or a specific login 
+	   		page for users to log in.
+	   		
+	   		With Form-Based, a web page that contains a login form for users to input their
+			login details will is rendered
+	    -->
+	    
+	    <!--  
+	   <http auto-config='true'>  -->
+	<http auto-config='true'>
+		<!-- redirect to /category after successful login -->
+		<!-- configure the authentication-failure-url attribute to specify which 
+			URL to redirect to on
+			login error. -->
+		<form-login login-page="/login.do" default-target-url="/category" 
+			authentication-failure-url="/login.do?error=true"/>
+		<intercept-url pattern="/category*" access="ROLE_USER,ROLE_ANONYMOUS" />
+		<intercept-url pattern="/account*" access="ROLE_USER" />
+		<intercept-url pattern="/accountDelete*" access="ROLE_ADMIN" />
+		
+		<logout logout-success-url="/login.do" />
+		
+		<!-- 
+			<remember-me
+			By default, it encodes the username, password, remember-me expiration time, and a private key as a token, and stores it as a
+			cookie in the user’s browser. No need to do any database lookup to authenticate!!!!
+		 -->
+		<remember-me key="mySecret"/>
+		
+		 <!-- 
+	  		Remember that you must always include a wildcard at the end of a URL pattern. Failing 
+	  		to do so will make the URL pattern unable to match a URL that has request parameters.
+	  		As a result, hackers could easily skip the security check by appending an arbitrary 
+	  		request parameter.
+	   	-->
+	</http>
+	
+	<!-- 
+		For simple security requirements, Spring supports defining user details in 
+		<user-service> directly
+	 -->
+	 <!-- 
+	<authentication-manager>
+		<authentication-provider>
+			<user-service>
+				<user name="admin" password="secret" authorities="ROLE_ADMIN,ROLE_USER" />
+				<user name="user1" password="1111" authorities="ROLE_USER" />
+			</user-service>
+		</authentication-provider>
+	</authentication-manager>
+	 -->
+	 
+	
+	<!-- 
+		Spring Security also supports using custom SQL statements to query a legacy database
+		for user details.
+	 -->
+	 <!-- 
+	<authentication-manager>
+		<authentication-provider>
+			<jdbc-user-service data-source-ref="dataSource"
+				users-by-username-query=
+				"SELECT username, password, 'true' as enabled
+				FROM member
+				WHERE username = ?"
+				authorities-by-username-query=
+				"SELECT member.username, member_role.role as authorities
+				FROM member, member_role
+				WHERE member.username = ? AND member.id = member_role.member_id" />
+		</authentication-provider>
+	</authentication-manager>
+	 -->
+	 <!-- 
+	 	you can choose MD5 (Message-Digest algorithm 5), a one-way hash algorithm, 
+	 	to encrypt your passwords.
+	  -->
+	  
+	  <beans:bean class="org.springframework.security.authentication.encoding.ShaPasswordEncoder" 
+	  		id="passwordEncoder"/>
+	  
+	  <authentication-manager>
+		<authentication-provider> 
+			<!-- optional password encryption -->
+			<password-encoder ref="passwordEncoder">
+				<!-- optional use of salt  -->
+				 <salt-source ref="saltSource"/>
+			</password-encoder>
+			<jdbc-user-service data-source-ref="dataSource" cache-ref="userCache" />
+		</authentication-provider>
+	</authentication-manager>
+	
+	<beans:bean id="userCache"
+		class="org.springframework.security.core.userdetails.cache.EhCacheBasedUserCache">
+		<beans:property name="cache" ref="userEhCache" />
+	</beans:bean>
+	
+	<!-- 
+		NOTES:
+		an Ehcache instance can be created via EhCacheFactoryBean by providing a cache
+		manager and a cache name.
+	 -->
+	<beans:bean id="userEhCache"
+		class="org.springframework.cache.ehcache.EhCacheFactoryBean">
+		<beans:property name="cacheManager" ref="cacheManager" />
+		<beans:property name="cacheName" value="userCache" />
+	</beans:bean>
+	<!-- 
+		A salt is a second plaintext component which is concatenated with the plaintext password 
+		prior to encryption in order to ensure that two factors must be used to generate encrypted 
+		password values.
+		
+		Need a salt because if the encrypted password in generated based only on the plian text 
+		password, hackers can generate encrypted password from plain text passwords and compared
+		to those stored in database (if the gain access to DB).
+		
+		Best practice salts generally fall into one of two categories:
+		
+		They are algorithmically generated from some piece of data associated with the user—for 
+		example, the timestamp that the user was created
+		
+		They are randomly generated, and stored in some form (plaintext or two-way encrypted) 
+		along with the user's password record
+
+	 -->  
+		<beans:bean class="org.springframework.security.authentication.dao.ReflectionSaltSource" id="saltSource">
+			<beans:property name="userPropertyToUse" value="username"/>
+		</beans:bean>
+		
+		<!-- This is not needed because userDetailsService is create by the jdbc-user-service tag  
+			If you are not using the default USEERS,AUTHORITIES TABLES to store credentials, you
+			will need to extend the UserService Interface and implement 
+		<beans:bean id="userDetailsService" class="org.springframework.security.core.userdetails.jdbc.JdbcDaoImpl">
+			<beans:property name="dataSource" ref="dataSource"></beans:property>
+		</beans:bean>
+		 -->
+</beans:beans>

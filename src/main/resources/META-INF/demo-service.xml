@@ -1,0 +1,27 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+xsi:schemaLocation="http://www.springframework.org/schema/beans
+http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
+	<bean id="categoryService"
+		class="com.my.mdemo.service.CategoryService" >
+		<property name="categoryDao" ref="categoryDao"/>
+	</bean>
+	
+	<bean id="toneService"
+		class="com.my.mdemo.service.ToneService" >
+		<property name="toneDao" ref="toneDao"/>
+	</bean>
+	
+	<!-- 
+		NOTES::
+		As an Ehcache manager may be used by other service components, it should be defined
+		in demo-service.xml.
+		
+		EhCacheManagerFactoryBean creates an Ehcache manager by loading a configuration file. 
+		By default, it loads ehcache.xml (located in the root of the classpath).
+	 -->
+	<bean id="cacheManager"
+			class="org.springframework.cache.ehcache.EhCacheManagerFactoryBean" />
+
+	
+</beans>

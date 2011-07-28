@@ -1,0 +1,51 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 07.11.2006 15:06:53 by Hibernate Tools 3.2.0.beta7 -->
+<hibernate-mapping auto-import="false">
+    <class name="com.my.mdemo.model.BillingCode" table="TRBT_BILLING_CODE">
+        <id name="id" type="integer">
+            <column name="ID" precision="10" scale="0" />
+            <generator class="native">
+                <param name="sequence">S_RBT_BILLING_CODE</param>
+            </generator>
+        </id>
+
+        <property name="code" type="string">
+            <column name="CODE" length="50" not-null="true" />
+        </property>
+        <property name="altCode" type="string">
+            <column name="ALT_CODE" length="15"/>
+        </property>
+        <property name="created" type="timestamp">
+            <column name="CREATED" length="7" not-null="true" />
+        </property>
+        <property name="createdBy" type="string">
+            <column name="CREATED_BY" length="30" not-null="true" />
+        </property>
+        <property name="usedByTones" lazy="false" type="int" formula="(select count(tone.id) from TRBT_TONE tone where tone.BILLING_CODE_ID = id)" />
+        <property name="usedByCategories" lazy="false" type="int" formula="(select count(categ.id) from TRBT_CATEGORY categ where categ.BILLING_CODE_ID = id)" />
+        <property name="usedByProfiles" lazy="false" type="int" formula="(select count(subProfile.id) from TRBT_SUBSCRIBER_PROFILE subProfile where subProfile.BILLING_CODE_ID = id or subProfile.PERSONAL_CONTENT_BILLING_ID = id)" />
+        <map name="prices" inverse="true" cascade="all,delete-orphan" >
+            <key>
+                <column name="BILLING_CODE_ID" precision="10" scale="0" not-null="true" />
+            </key>
+            <map-key-many-to-many column="CURRENCY_ID" class="com.my.mdemo.model.Currency"/>
+            <one-to-many class="com.my.mdemo.model.BillingCodePrice"/>
+        </map>
+      
+        <set name="tones" inverse="true">
+            <key>
+                <column name="BILLING_CODE_ID" precision="10" scale="0" not-null="true"/>
+            </key>
+            <one-to-many class="com.my.mdemo.model.Tone" />
+        </set>
+        <set name="categories" inverse="true">
+            <key>
+                <column name="BILLING_CODE_ID" precision="10" scale="0" not-null="true"/>
+            </key>
+            <one-to-many class="com.my.mdemo.model.Category" />
+        </set>
+        
+    </class>
+</hibernate-mapping>

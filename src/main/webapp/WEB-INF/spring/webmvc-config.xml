@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:context="http://www.springframework.org/schema/context" xmlns:mvc="http://www.springframework.org/schema/mvc" xmlns:p="http://www.springframework.org/schema/p" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd     http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.0.xsd     http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-3.0.xsd">
+	
+	<!-- Ror serving my spring static content. -->
+	<!-- Without this the css files will not be loaded because I am mapping -->
+	<!-- all requests (see the web.xml) to the Dispatcher. Request to the dispatcher
+		 for the css could be thrown away because there is no mapping to any controller.
+		 Another solution would be to map specific extensions, like *.form, to the 
+		 Servlet Dispatcher.
+	-->
+	<mvc:resources mapping="/styles/**" location="/styles/"/>
+	<mvc:resources mapping="/images/**" location="/images/"/>
+	<mvc:resources mapping="/js/**" location="/js/"/>
+	
+	<bean id="viewResolver" class="org.springframework.web.servlet.view.UrlBasedViewResolver" >
+		<property name="viewClass" value="org.springframework.web.servlet.view.tiles2.TilesView"/>
+		<property name="requestContextAttribute" value="requestContext"/>
+		<property name="order"><value>1</value></property>
+	</bean>
+	
+	<bean id="viewResolver2" 
+		class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+		<property name="prefix" value="/WEB-INF/views/" />
+		<property name="suffix" value=".jsp"/>
+		<property name="order"><value>2</value></property>
+	</bean>
+	
+	<!-- For annotated validation -->  
+	<mvc:annotation-driven />
+	
+	<mvc:interceptors>
+		<!--Note: Even request made while rendering the page will be intercepted.
+			For example, if you have reference to a style sheet or image file in the JSP
+			the intercepter will be invoked when we load these resources for the "very first time".
+			I believe these resource will be reloaded based on caching policy, so the intercepter
+			will no be called each time the page is loaded.
+		 -->
+		<bean id="generalInterceptor" class="com.my.mdemo.web.util.GeneralInterceptor"/>
+	</mvc:interceptors>
+	
+	<context:component-scan base-package="com.my.mdemo.web.ctlr" />
+	
+	<bean class="org.springframework.web.servlet.mvc.annotation.DefaultAnnotationHandlerMapping" >
+	</bean>
+	
+	
+    <bean class="org.springframework.web.servlet.mvc.annotation.AnnotationMethodHandlerAdapter">
+
+    </bean>
+    
+	<bean id="tilesConfigurer"
+		class="org.springframework.web.servlet.view.tiles2.TilesConfigurer">
+		<property name="definitions">
+			<list>
+				<value>/WEB-INF/tiles-layout.xml</value>
+			</list>
+		</property>
+	</bean>
+	
+	<!-- Resolves localized messages*.properties and application.properties files in the application to	allow for internationalization. 
+		The messages*.properties files translate Roo generated messages which are part of the admin interface, the application.properties
+		resource bundle localizes all application specific messages such as entity names and menu items. -->
+	<bean class="org.springframework.context.support.ReloadableResourceBundleMessageSource" id="messageSource" p:basenames="WEB-INF/i18n/messages,WEB-INF/i18n/application" p:fallbackToSystemLocale="false"/>
+	
+	<bean id="themeResolver"
+		class="org.springframework.web.servlet.theme.FixedThemeResolver">
+		<property name="defaultThemeName"><value>theme1</value></property>
+	</bean>			
+</beans>

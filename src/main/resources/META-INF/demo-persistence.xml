@@ -1,0 +1,17 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+xsi:schemaLocation="http://www.springframework.org/schema/beans
+http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
+
+	<bean id="daoProxyTemplate" class="org.springframework.orm.hibernate3.support.HibernateDaoSupport" abstract="true">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	
+	<bean id="categoryDao"
+		class="com.my.mdemo.dao.hibernate.CategoryDaoImpl" parent="daoProxyTemplate"  />
+		
+		
+	<bean id="toneDao"
+		class="com.my.mdemo.dao.hibernate.ToneDaoImpl" parent="daoProxyTemplate"  />
+	
+</beans>

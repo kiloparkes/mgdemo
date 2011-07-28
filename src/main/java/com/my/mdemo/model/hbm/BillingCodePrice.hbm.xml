@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 07.11.2006 15:06:53 by Hibernate Tools 3.2.0.beta7 -->
+<hibernate-mapping auto-import="false">
+    <class name="com.my.mdemo.model.BillingCodePrice" table="TRBT_BILLING_CODE_PRICE">
+        <id name="id" type="integer">
+            <column name="ID" precision="10" scale="0" />
+            <generator class="native">
+                <param name="sequence">S_RBT_BILLING_CODE_PRICE</param>
+            </generator>
+        </id>
+        <many-to-one name="billingCode" class="com.my.mdemo.model.BillingCode">
+            <column name="BILLING_CODE_ID" precision="10" scale="0" not-null="true" />
+        </many-to-one>
+        <many-to-one name="currency" class="com.my.mdemo.model.Currency">
+            <column name="CURRENCY_ID" precision="10" scale="0" not-null="true"/>
+        </many-to-one>
+        <property name="price" type="integer">
+            <column name="PRICE" precision="10" scale="0" not-null="true"/>
+        </property>
+    </class>
+</hibernate-mapping>
