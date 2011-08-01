@@ -75,8 +75,9 @@ public class ToneDaoImpl extends HibernateDaoSupport implements ToneDao {
 				//query.addEntity("tc", ToneCategory.class);
 				
 				query.setInteger("catId", catId);
+				//fetchSize range [0..m]
 				query.setMaxResults(fetchSize);
-				query.setFirstResult(startPos);
+				query.setFirstResult(startPos*fetchSize);
 				
 				List l = query.list();
 					

@@ -2,7 +2,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 <table>
-	<c:forEach items="${tones}" var="t" varStatus="idx">
+	<c:forEach items="${pagedInfo.tones}" var="t" varStatus="idx">
 		<tr>
 			<td>
 				<img src='<c:url value="/images/kira.jpg"/>' alt="IMG" >

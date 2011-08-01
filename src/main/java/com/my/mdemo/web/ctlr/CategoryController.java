@@ -85,25 +85,22 @@ public class CategoryController {
 			p.getNavInfo().setRowCount(cnt);
 			String page = (String)request.getParameter("page");
 			if (null == page){
-				p.getNavInfo().setCurrentPage(0);
+				p.getNavInfo().setCurrentPage(1);
 			}
 			else{
 				p.getNavInfo().setCurrentPage(Integer.parseInt(page));
 			}
 			
 			List<Tone> tl = toneService.getTonesOfCategory(id, 
-					p.getNavInfo().getPageSize(), p.getNavInfo().getCurrentPage());
-			model.addAttribute("tones", tl);
+					p.getNavInfo().getPageSize(), p.getNavInfo().getCurrentPage()-1);
 			p.setTones(tl);
 			
 			model.addAttribute("pagedInfo", p);
 			
 			view = "toneResult";
 		}
-		else {
-			model.addAttribute("category", c);
-		}
 		
+		model.addAttribute("category", c);
 		prepareTrail(c, model);
 		
 		return view;

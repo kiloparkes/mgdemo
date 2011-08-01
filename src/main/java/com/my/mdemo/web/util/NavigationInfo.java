@@ -2,21 +2,25 @@ package com.my.mdemo.web.util;
 
 public class NavigationInfo {
 
+	// current page -- 
 	private int currentPage;
 
+	// number of objects per page
 	private int pageSize;
 
+	// total number of rows meeting the query criteria
 	private int rowCount;
 
-	private int maxIndices;
+	// number of index (navigation) links to be displayed
+	private int maxDisplayedIndexes;
 
 	public NavigationInfo() {
 
-		currentPage = 0;
+		currentPage = 1;
 
 		rowCount = 0;
 
-		maxIndices = 5;
+		maxDisplayedIndexes = 3;
 
 		pageSize = 3;
 
@@ -30,13 +34,13 @@ public class NavigationInfo {
 
 	public void setCurrentPage(int currentPage) {
 
-		if (currentPage < 0)
+		if (currentPage < 1)
 
-			this.currentPage = 0;
+			this.currentPage = 1;
 
-		else if (currentPage > getPageCount() - 1)
+		else if (currentPage > getPageCount())
 
-			this.currentPage = getPageCount() - 1;
+			this.currentPage = getPageCount();
 
 		else
 
@@ -68,20 +72,22 @@ public class NavigationInfo {
 
 	}
 
-	public int getMaxIndices() {
+	public int getmaxDisplayedIndexes() {
 
-		return maxIndices;
+		return maxDisplayedIndexes;
 
 	}
 
-	public void setMaxIndices(int maxIndices) {
+	public void setmaxDisplayedIndexes(int maxDisplayedIndexes) {
 
-		this.maxIndices = maxIndices;
+		this.maxDisplayedIndexes = maxDisplayedIndexes;
 
 	}
 
 	public int getPageCount() {
 
+		// if rowCount = 10 and each page should contain 3 object
+		// Then pageCount = 4. 10/3 = 3.33, but the ceiling is 4 
 		return (int) Math.ceil((double) rowCount / pageSize);
 
 	}
@@ -90,13 +96,13 @@ public class NavigationInfo {
 
 		int prev = currentPage - 1;
 
-		return prev < 0 ? 0 : prev;
+		return prev < 1 ? 1 : prev;
 
 	}
 
 	public int getNextIndex() {
 
-		int lastIndex = getPageCount() - 1;
+		int lastIndex = getPageCount();
 
 		int next = currentPage + 1;
 
@@ -106,13 +112,13 @@ public class NavigationInfo {
 
 	public boolean isFirstPage() {
 
-		return 0 == currentPage;
+		return 1 == currentPage;
 
 	}
 
 	public boolean isLastPage() {
 
-		return (getPageCount() - 1) == currentPage;
+		return getPageCount() == currentPage;
 
 	}
 
@@ -134,38 +140,14 @@ public class NavigationInfo {
 
 	public int[] getIndexRange() {
 
-		// determine the standard window
-
-		int start = currentPage - maxIndices / 2;
-
-		int end = start + maxIndices - 1;
-
-		// shift to right if start underflows 0
-
-		if (start < 0) {
-
-			end -= start; // end – -start = end + start = shift right
-
-			start = 0;
-
-		}
-
-		// now maybe the window overflows pageCount – so shift to left again
-
-		int lastIndex = getPageCount() - 1;
-
-		if (end > (lastIndex)) {
-
-			start -= (end - lastIndex);
-
-			end = lastIndex;
-
-		}
-
-		// we have finalized end, now if start < 0 then truncate it
-
-		if (start < 0)
-			start = 0;
+		int end = currentPage + maxDisplayedIndexes -1;
+		if( end > getPageCount())
+			end = getPageCount();
+		
+		int start = currentPage - maxDisplayedIndexes;
+		if(start < 1)
+			start = 1;
+	
 		return new int[] {start, end};
 	}
 }
