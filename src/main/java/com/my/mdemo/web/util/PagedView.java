@@ -4,11 +4,11 @@ import java.util.List;
 
 import com.my.mdemo.model.*;
 
-public class PagedView {
+public class PagedView<E> {
 
 	private NavigationInfo navInfo = new NavigationInfo();
 
-	private List<Tone> tones;
+	private List<E> tones;
 
 	public NavigationInfo getNavInfo() {
 
@@ -21,13 +21,13 @@ public class PagedView {
 
 	}
 
-	public List<Tone> getTones() {
+	public List<E> getTones() {
 
 		return tones;
 
 	}
 
-	public void setTones(List<Tone> Tones) {
+	public void setTones(List<E> Tones) {
 
 		this.tones = Tones;
 
@@ -39,7 +39,7 @@ public class PagedView {
 
 	}
 
-	public void setTone(int i, Tone Tone) {
+	public void setTone(int i, E Tone) {
 
 		this.tones.add(i, Tone);
 

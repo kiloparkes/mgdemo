@@ -80,7 +80,7 @@ public class CategoryController {
 		if(c!= null && c.getChildrenCount() == 0)
 		{
 		
-			PagedView p = new PagedView();
+			PagedView<Tone> p = new PagedView<Tone>();
 			int cnt = toneService.getTonesOfCategoryCount(id);
 			p.getNavInfo().setRowCount(cnt);
 			String page = (String)request.getParameter("page");

@@ -3,6 +3,7 @@ package com.my.mdemo.web.ctlr;
 import java.util.HashMap;
 import java.util.Map;
 
+import com.my.mdemo.model.Tone;
 import com.my.mdemo.web.util.PagedView;
 
 public class ToneController {
@@ -16,7 +17,7 @@ public class ToneController {
 			
 		Map<Object, Object> model = new HashMap<Object, Object>();
 		
-		PagedView pcustv = new PagedView();
+		PagedView<Tone> pcustv = new PagedView<Tone>();
 		
 		 
 		
