@@ -1,11 +1,8 @@
 package com.my.mdemo.web.util;
 
-import java.net.URLEncoder;
 import java.util.ArrayList;
-import java.util.LinkedList;
 import java.util.List;
 
-import javax.servlet.RequestDispatcher;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -31,13 +28,10 @@ public class GeneralInterceptor implements HandlerInterceptor {
 		if( servletPath.endsWith("/"))
 			servletPath = servletPath.substring(0, servletPath.length()-1);
 		
-		String query = request.getQueryString();
-		
-		 String uri = request.getRequestURI();
-		
 		@SuppressWarnings("unchecked")
 		List<Category> list = (ArrayList<Category>)request.getSession().getAttribute(CATEGORY_LIST_SESSION_ATTR);
-		if( !(servletPath.equals("/category")) && (list == null || list.isEmpty())  )
+		if( !servletPath.equals("/login.do") &&
+				!(servletPath.equals("/category")) && (list == null || list.isEmpty())  )
 		{
 			/*
 			 * The idea was to first redirect to category list where we load the root categories

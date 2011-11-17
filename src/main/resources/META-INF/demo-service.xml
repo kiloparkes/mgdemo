@@ -12,6 +12,11 @@ http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
 		<property name="toneDao" ref="toneDao"/>
 	</bean>
 	
+	<bean id="userService"
+		class="com.my.mdemo.service.UserService" >
+		<property name="usersDao" ref="usersDao"/>
+	</bean>
+	
 	<!-- 
 		NOTES::
 		As an Ehcache manager may be used by other service components, it should be defined

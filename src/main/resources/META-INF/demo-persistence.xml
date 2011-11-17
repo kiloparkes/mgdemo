@@ -13,5 +13,8 @@ http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
 		
 	<bean id="toneDao"
 		class="com.my.mdemo.dao.hibernate.ToneDaoImpl" parent="daoProxyTemplate"  />
+		
+	<bean id="usersDao"
+		class="com.my.mdemo.dao.hibernate.UsersDaoImpl" parent="daoProxyTemplate"  />
 	
 </beans>

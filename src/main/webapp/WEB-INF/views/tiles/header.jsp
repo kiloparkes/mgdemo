@@ -13,5 +13,5 @@
 	
 	</div>
 	<div class="account">
-			<a href="#">My Account</a>
+			<a href="<c:url value="/account"/>">My Account</a>
 	</div>

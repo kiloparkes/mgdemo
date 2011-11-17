@@ -183,4 +183,10 @@ table.test{
 	margin-top: 25px;
 }
 
+#top .preview {
+	font-size:15px;
+	float: right; 
+	margin-left: 100px;
+	margin-top: 25px;
+}
  

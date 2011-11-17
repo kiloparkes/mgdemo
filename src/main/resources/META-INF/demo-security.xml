@@ -30,12 +30,18 @@ http://www.springframework.org/schema/security/spring-security-3.0.xsd">
 	   		
 	   		With Form-Based, a web page that contains a login form for users to input their
 			login details will is rendered
+			
+			Note that when HTTP Basic authentication and form-based login are enabled at the same time, the
+			latter will be used.
 	    -->
 	    
 	    <!--  
 	   <http auto-config='true'>  -->
 	<http auto-config='true'>
-		<!-- redirect to /category after successful login -->
+		<!-- redirect to /category after successful login when the login page was directly requested
+		Otherwise, the user will be redirected to the target URL once the login succeeds. 
+		If no default-target-url is defined,by default the user will be redirected to the context path’s root -->
+		
 		<!-- configure the authentication-failure-url attribute to specify which 
 			URL to redirect to on
 			login error. -->
@@ -80,7 +86,8 @@ http://www.springframework.org/schema/security/spring-security-3.0.xsd">
 	
 	<!-- 
 		Spring Security also supports using custom SQL statements to query a legacy database
-		for user details.
+		for user details. This necessary when the system in which you are adding Spring security
+		already has username/password store
 	 -->
 	 <!-- 
 	<authentication-manager>

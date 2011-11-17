@@ -13,11 +13,13 @@
             java:/comp/env/jdbc/mainDB
         </property>
         -->
+        <!-- 
         <property name="connection.driver_class">oracle.jdbc.OracleDriver</property>
-        <property name="connection.url">jdbc:oracle:thin:@//localhost:1521/XE</property>
+        <property name="connection.url">jdbc:oracle:thin:@//localhost3:1521/XE</property>
         <property name="connection.username">rbt</property>
         <property name="connection.password">rbt</property>
-		
+		 -->
+		 
 	 	<property name="dialect">org.hibernate.dialect.Oracle10gDialect</property>
 	 	<!--  
 		<property name="cache.provider_class">org.hibernate.cache.EhCacheProvider</property>
