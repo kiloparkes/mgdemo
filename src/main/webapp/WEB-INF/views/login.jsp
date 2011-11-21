@@ -115,8 +115,9 @@
 		Sign Up...
 	</div>
 
+	<c:url var="u" value="/signUp"></c:url>
 	<div>
-		<form:form method="POST" action='/mdemo/signUp' modelAttribute="signup">
+		<form:form method="POST" action="${u}" modelAttribute="signup">
 			<%-- This means that upon rendering the view, the form 
 			expects an object named signup to be available, --%>
 			

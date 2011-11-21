@@ -27,14 +27,15 @@
 		
 		<!-- Echo all executed SQL to stdout -->
 		<!-- sql output should be enabled by setting org.hibernate.SQL=DEBUG -->
-		<!-- 
-		<property name="show_sql">false</property>
-		 -->
+	 
+		<property name="show_sql">true</property>
+	
         
         <!-- Booleans in HQL Queries -->
         <property name="hibernate.query.substitutions">true 1, false 0</property>
         
 		<!-- mapping files -->
+		<mapping resource="com/my/mdemo/model/hbm/Authorities.hbm.xml" />
 		<mapping resource="com/my/mdemo/model/hbm/BillingCode.hbm.xml" />
 		<mapping resource="com/my/mdemo/model/hbm/BillingCodePrice.hbm.xml" />
         <mapping resource="com/my/mdemo/model/hbm/Category.hbm.xml" />
@@ -44,6 +45,7 @@
         <mapping resource="com/my/mdemo/model/hbm/Tone.hbm.xml" />
         <mapping resource="com/my/mdemo/model/hbm/ToneCategory.hbm.xml" />
         <mapping resource="com/my/mdemo/model/hbm/ToneDetails.hbm.xml" />
+        <mapping resource="com/my/mdemo/model/hbm/Users.hbm.xml" />
        
        <!-- 
        		read-only—A concurrency strategy suitable for data which never changes.

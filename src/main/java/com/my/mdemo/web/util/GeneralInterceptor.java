@@ -30,7 +30,7 @@ public class GeneralInterceptor implements HandlerInterceptor {
 		
 		@SuppressWarnings("unchecked")
 		List<Category> list = (ArrayList<Category>)request.getSession().getAttribute(CATEGORY_LIST_SESSION_ATTR);
-		if( !servletPath.equals("/login.do") &&
+		if( !servletPath.equals("/login.do") && !servletPath.equals("/signUp") &&
 				!(servletPath.equals("/category")) && (list == null || list.isEmpty())  )
 		{
 			/*

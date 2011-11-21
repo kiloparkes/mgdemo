@@ -160,6 +160,12 @@ http://www.springframework.org/schema/security/spring-security-3.0.xsd">
 			<beans:property name="userPropertyToUse" value="username"/>
 		</beans:bean>
 		
+		<!--  
+		<beans:bean id="userDetailsService" class="com.my.mdemo.service.UserService">
+			<beans:property name="dataSource" ref="dataSource"></beans:property>
+		</beans:bean>
+		-->
+		
 		<!-- This is not needed because userDetailsService is create by the jdbc-user-service tag  
 			If you are not using the default USEERS,AUTHORITIES TABLES to store credentials, you
 			will need to extend the UserService Interface and implement 

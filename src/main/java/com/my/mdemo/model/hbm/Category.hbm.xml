@@ -108,7 +108,7 @@
     </query>
     
     <sql-query name="rootCategoriesSQL">
-    	<!-- NB: Must specify the return type for native SQL -->
+    	<!-- NOTE: Must specify the return type for native SQL -->
     	<return alias="category" class="com.my.mdemo.model.Category"></return>
     	<![CDATA[
      			select * from TRBT_CATEGORY where parent_id is null

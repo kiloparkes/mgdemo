@@ -9,4 +9,7 @@ public interface UsersDao {
 	void deleteUser(Users user);
 	
 	void updateUsers(Users user);
+	
+	Users getUser(String unsermane);
+
 }

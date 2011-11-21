@@ -1,5 +1,9 @@
 package com.my.mdemo.dao.hibernate;
 
+import java.util.List;
+
+import org.hibernate.criterion.DetachedCriteria;
+import org.hibernate.criterion.Restrictions;
 import org.springframework.orm.hibernate3.support.HibernateDaoSupport;
 
 import com.my.mdemo.dao.UsersDao;
@@ -9,8 +13,7 @@ public class UsersDaoImpl extends HibernateDaoSupport implements UsersDao {
 
 	@Override
 	public void addUser(Users user) {
-		// TODO Auto-generated method stub
-
+		getHibernateTemplate().merge(user);
 	}
 
 	@Override
@@ -25,4 +28,16 @@ public class UsersDaoImpl extends HibernateDaoSupport implements UsersDao {
 
 	}
 
+	public Users getUser(String username){
+		
+		DetachedCriteria c = DetachedCriteria.forClass(Users.class);
+		c.add(Restrictions.eq("username", username));
+		
+		@SuppressWarnings("unchecked")
+		List<Users> users = (List<Users>)getHibernateTemplate().findByCriteria(c);
+		
+		Users u =  (users == null || users.size() == 0) ? null : users.get(0);
+		
+		return u;
+	}
 }
