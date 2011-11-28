@@ -1,0 +1,36 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 07.11.2006 15:06:53 by Hibernate Tools 3.2.0.beta7 -->
+<hibernate-mapping auto-import="false">
+    <class name="com.my.mdemo.model.Users" table="USERS" mutable="false">
+       <id name="id" type="integer">
+            <column name="ID" precision="10" scale="0" />
+            <generator class="native">
+                <param name="sequence">S_USERS</param>
+            </generator>
+        </id>
+        
+        <!-- Note: Without inverse=true we will get the following exception -->
+        <!-- Repeated column in mapping for entity: column: USERS_ID (should be mapped with insert="false" update="false") -->
+       
+       <!-- fetch="join" lazy="false"  -->
+        <set name="authorities" table="AUTHORITIES" cascade="all,delete-orphan" inverse="true">
+			<key column="USERS_ID"  not-null="true" />
+			<one-to-many class="com.my.mdemo.model.Authorities"/>
+		</set>
+		
+		<property name="username" type="string">
+			<column name="USERNAME"/>
+		</property>
+		
+		<property name="password" type="string">
+			<column name="password"/>
+		</property>
+		
+		<property name="enabled" type="boolean">
+			<column name="enabled" precision="1" scale="0" not-null="true"/>
+		</property>
+		
+    </class>
+</hibernate-mapping>
