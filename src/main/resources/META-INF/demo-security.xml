@@ -66,7 +66,39 @@ http://www.springframework.org/schema/security/spring-security-3.0.xsd">
 	  		As a result, hackers could easily skip the security check by appending an arbitrary 
 	  		request parameter.
 	   	-->
+	   	
+	   	<custom-filter ref="ipFilter" before="FILTER_SECURITY_INTERCEPTOR"/>
+	   	<!-- 
+	   		we'll want to position this filter right before the FilterSecurityInterceptor, which 
+	   		is responsible for determining whether the user has provided correct credentials to 
+	   		give them access to the system. At this point in the servlet chain, the user's identity 
+	   		is well known, so this is the appropriate location for the insertion of our filter.
+	   	 -->
+	   	 <custom-filter ref="requestHeaderFilter" before="FORM_LOGIN_FILTER"/>
 	</http>
+	
+	<beans:bean id="ipFilter" class="com.my.mdemo.web.util.IPRoleAuthenticationFilter">
+		<beans:property name="targetRole" value="ROLE_ADMIN"/>
+		<beans:property name="allowedIPAddresses">
+			<beans:list>
+				<beans:value>192.168.251.110</beans:value>
+			</beans:list>
+		</beans:property>
+	</beans:bean>
+	
+	<beans:bean id="requestHeaderFilter" class="com.my.mdemo.web.util.RequestHeaderProcessingFilter">
+		<beans:property ref="authenticationManager" name="authenticationManager"/>
+		<beans:property ref="savedRequestAwareAuthenticationSuccessHandler" name="authenticationSuccessHandler"/>
+	</beans:bean>
+	
+	<beans:bean id="signedSSOAuthenticationProvider" class="com.my.mdemo.web.util.SignedMsisdnAuthenticationProvider">
+	</beans:bean>
+	
+	<beans:bean id="savedRequestAwareAuthenticationSuccessHandler" 
+		class="org.springframework.security.web.authentication.SavedRequestAwareAuthenticationSuccessHandler">
+			<beans:property value="/category" name="defaultTargetUrl"/>
+	</beans:bean>
+	
 	
 	<!-- 
 		For simple security requirements, Spring supports defining user details in 
@@ -112,7 +144,8 @@ http://www.springframework.org/schema/security/spring-security-3.0.xsd">
 	  <beans:bean class="org.springframework.security.authentication.encoding.ShaPasswordEncoder" 
 	  		id="passwordEncoder"/>
 	  
-	  <authentication-manager>
+	  <authentication-manager alias="authenticationManager">
+	  	<authentication-provider ref="signedSSOAuthenticationProvider"></authentication-provider>
 		<authentication-provider> 
 			<!-- optional password encryption -->
 			<password-encoder ref="passwordEncoder">
@@ -173,4 +206,21 @@ http://www.springframework.org/schema/security/spring-security-3.0.xsd">
 			<beans:property name="dataSource" ref="dataSource"></beans:property>
 		</beans:bean>
 		 -->
+		 
+		 <!-- 
+		 	The role of the AuthenticationProvider, in the overall authentication process, 
+		 	is to accept presented credentials (known as an Authentication object or authentication token) 
+		 	from a principal's request and verify their correctness and validity.
+		  -->
+		  
+		  <!-- 
+		  	Normally, an AuthenticationProvider will look for a particular specialization of 
+		  	AuthenticationToken that has been populated by a servlet filter earlier in the chain
+		  	(earlier than the AuthenticationManager access checking is done, specifically),
+		  	
+		  	So, when you are implementing a custom AuthenticationProvider, it's quite likely 
+		  	you'll be implementing a custom servlet filter as well, whose responsibility is 
+		  	to supply a specialized AuthenticationToken.
+		   -->
+		   
 </beans:beans>

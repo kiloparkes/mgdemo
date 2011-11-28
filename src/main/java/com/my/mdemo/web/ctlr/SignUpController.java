@@ -55,14 +55,17 @@ public class SignUpController{
 		Authorities auth = new Authorities();
 		auth.setAuthority("ROLE_USER");
 		auth.setUsername(signup.getUsername());
+		/*
 		auth.setUsers(user);
-		
-		
 		auset.add(auth); // or user.getAuthorities().add(auth);
 		
 		//Note: Must set the collection on the holding entity in order for the collection
 		//to be save automatically when the holding entity is saved.
 		user.setAuthorities(auset);
+		
+		*/
+		//Note: Using the addAuthority convenience method instead of the three calls above
+		user.addAuthority(auth);
 		
 		try {
 			userService.addUser(user);

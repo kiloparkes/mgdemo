@@ -49,4 +49,11 @@ public class Users {
 		this.authorities = authorities;
 	}
 	
+	//Note:
+	//A convenience method
+	//This ensures that both ends of the relationship are set
+	public void addAuthority(Authorities auth){
+		auth.setUsers(this);
+		authorities.add(auth);
+	}
 }
