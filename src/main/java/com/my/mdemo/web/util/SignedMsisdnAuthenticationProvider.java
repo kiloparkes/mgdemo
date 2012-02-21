@@ -1,15 +1,10 @@
 package com.my.mdemo.web.util;
 
-import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
 
 import org.springframework.context.support.MessageSourceAccessor;
 import org.springframework.security.authentication.AuthenticationProvider;
 import org.springframework.security.authentication.BadCredentialsException;
-
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.core.SpringSecurityMessageSource;
@@ -26,8 +21,8 @@ public class SignedMsisdnAuthenticationProvider implements AuthenticationProvide
 		
 		SignedMsisdnAuthenticationToken successAuth = null;
 		if(vaidate(authentication)) {
-			
-			GrantedAuthorityImpl[] authList = {new GrantedAuthorityImpl("ROLE_USER")};
+			//NOTE:To test access denied change the role to an unknown role like ROLE_GUEST
+			GrantedAuthorityImpl[] authList = {new GrantedAuthorityImpl("ROLE_GUEST")};
 			// create new authenticated token -- where authenticated is set to true
 			successAuth = 
 				new SignedMsisdnAuthenticationToken(authentication.getPrincipal(), 

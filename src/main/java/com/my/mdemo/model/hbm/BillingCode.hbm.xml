@@ -26,7 +26,8 @@
         <property name="usedByTones" lazy="false" type="int" formula="(select count(tone.id) from TRBT_TONE tone where tone.BILLING_CODE_ID = id)" />
         <property name="usedByCategories" lazy="false" type="int" formula="(select count(categ.id) from TRBT_CATEGORY categ where categ.BILLING_CODE_ID = id)" />
         <property name="usedByProfiles" lazy="false" type="int" formula="(select count(subProfile.id) from TRBT_SUBSCRIBER_PROFILE subProfile where subProfile.BILLING_CODE_ID = id or subProfile.PERSONAL_CONTENT_BILLING_ID = id)" />
-        <map name="prices" inverse="true" cascade="all,delete-orphan" >
+        
+        <map name="prices" inverse="true" cascade="all,delete-orphan" lazy="false">
             <key>
                 <column name="BILLING_CODE_ID" precision="10" scale="0" not-null="true" />
             </key>

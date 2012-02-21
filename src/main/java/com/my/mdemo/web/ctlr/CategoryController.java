@@ -23,7 +23,7 @@ import com.my.mdemo.service.ToneService;
 import com.my.mdemo.web.util.PagedView;
 
 @Controller
-@SessionAttributes({"categorylist", "chain", "root"})
+@SessionAttributes({"categorylist", "chain", "root", "pagedInfo"})
 public class CategoryController {
 	
 	public CategoryService categoryService;
@@ -79,7 +79,7 @@ public class CategoryController {
 		Category c = categoryService.getCategory(id);
 		if(c!= null && c.getChildrenCount() == 0)
 		{
-		
+			// This is a leaf category... Only leaf categories can contain tones
 			PagedView<Tone> p = new PagedView<Tone>();
 			int cnt = toneService.getTonesOfCategoryCount(id);
 			p.getNavInfo().setRowCount(cnt);
@@ -93,7 +93,7 @@ public class CategoryController {
 			
 			List<Tone> tl = toneService.getTonesOfCategory(id, 
 					p.getNavInfo().getPageSize(), p.getNavInfo().getCurrentPage()-1);
-			p.setTones(tl);
+			p.setItems(tl);
 			
 			model.addAttribute("pagedInfo", p);
 			
@@ -132,6 +132,7 @@ public class CategoryController {
 				// zero based index
 				int x = chain.indexOf(c);
 				while(chain.size()>x+1){
+					// c should now be the last in the trail so remove all that come after
 					chain.removeLast();
 				}
 			}

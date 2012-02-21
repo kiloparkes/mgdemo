@@ -27,6 +27,8 @@ public class ToneDaoImpl extends HibernateDaoSupport implements ToneDao {
 	private static String TONE_IN_CATEGORY_QUERY = 
 		"select distinct {t.*} from trbt_tone t "
 		+ "join trbt_tone_category tc on tc.tone_id = t.id " 
+		+ "join trbt_billing_code bc on bc.id = t.billing_code_id "
+		+ "join trbt_billing_code_price bcp on bc.id = bcp.billing_code_id "
 		+ "where tc.category_id = :catId and t.deleted = 0";
 	
 	@SuppressWarnings("unused")

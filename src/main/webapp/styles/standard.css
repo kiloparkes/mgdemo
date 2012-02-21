@@ -67,7 +67,12 @@ table.test{
 	padding-right: 10px;
 	padding-left: 5px;
 	/* border-bottom-style: inset; */
+	font-size: 15px;
 	
+}
+
+#menu h3 {
+	font-size: 11px;
 }
 
 #menu a {
@@ -158,8 +163,8 @@ table.test{
 
 	
 #footer {
-	margin-left: 20px;
 	float: left;
+	margin-bottom: 10px:
 }
 
 #accessBar {
@@ -174,6 +179,7 @@ table.test{
 #top .logo {
 	font-size:30px;
 	float: left;
+	border-style: none;
 }
 
 #top .search {
@@ -190,3 +196,161 @@ table.test{
 	margin-top: 25px;
 }
  
+/*++++++++ Tips from Amazon ******************************************************/
+
+#feedback, #hlbcc, #hlb-upsell {
+    width: 900px;
+}
+
+#feedback, #hlbcc, #hlb-upsell {
+    margin-left: auto;
+    margin-right: auto;
+    text-align: left;
+}
+
+#feedback, #hlbcc, #hlb-upsell, #hl-feedback h4 {
+    font-family: verdana,helvetica,arial,sans-serif;
+    font-size: 11px;
+}
+
+#confirm {
+    margin-bottom: 10px;
+}
+#confirm-text {
+    font-weight: bold;
+}
+
+#confirm-text, #hl-confirm-text-previously {
+    color: #009900;
+    font-family: arial,helvetica,sans-serif;
+    font-size: 22px;
+}
+
+
+.s_confirmCheck {
+    background-position: 0 0;
+    height: 25px;
+    width: 25px;
+}
+
+.hucSprite {
+    display: inline-block;
+}
+
+#confirm-text .check {
+    margin-right: 8px;
+    position: static;
+    vertical-align: top;
+}
+
+#items {
+    width: 334px;
+}
+
+#items .item {
+    margin: 0 0 10px;
+}
+
+#items {
+    float: left;
+    line-height: 15px;
+    position: relative;
+}
+
+.item-title {
+    font-weight: bold;
+}
+
+.item-byline {
+    color: #000000;
+}
+
+.item-byline, .item-binding, .used-block {
+    line-height: 15px;
+}
+
+.item .item-stats {
+    float: left;
+    width: 200px;
+}
+
+.item .price {
+    float: left;
+}
+
+.price {
+    color: #990000;
+    font-family: arial,helvetica,sans-serif;
+    font-size: 12px;
+    white-space: nowrap;
+}
+.item-stats .price {
+    margin-bottom: 5px;
+    margin-top: 5px;
+}
+
+
+#cart {
+    color: #000000;
+    float: right;
+    font-size: 12px;
+    margin-bottom: 10px;
+    margin-left: 10px;
+    position: relative;
+}
+#cart .subcart-box {
+    margin-bottom: 0;
+}
+
+#cart-stats {
+    display: inline;
+    float: left;
+    font-size: 13px;
+    line-height: 15px;
+    margin-left: 5px;
+}
+#cart-subtotal, #cart-itemcount {
+    font-weight: bold;
+}
+
+#next-steps {
+    display: inline;
+    float: right;
+    margin-right: 5px;
+}
+
+.cBox {
+    margin-bottom: 15px;
+    position: relative;
+    width: 100%;
+}
+
+.cBoxInner {
+    padding: 9px;
+}
+
+.primary, .secEyebrow h2 {
+    background-color: #EAF3FE;
+}
+
+
+#cart .subcart-box {
+    margin-bottom: 0;
+}
+
+.cart-button {
+    margin-right: 10px;
+}
+
+
+.s_editCart {
+    background-position: -30px -60px;
+    height: 27px;
+    width: 120px;
+}
+
+.s_checkout {
+    background-position: -30px 0;
+    height: 27px;
+    width: 149px;
+}

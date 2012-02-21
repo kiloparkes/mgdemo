@@ -80,7 +80,7 @@
         <property name="lastDeletionAttempt" type="timestamp">
             <column name="LAST_DELETION_ATTEMPT"/>
         </property>
-        <many-to-one name="billingCode" class="com.my.mdemo.model.BillingCode">
+        <many-to-one name="billingCode" class="com.my.mdemo.model.BillingCode" lazy="false">
             <column name="BILLING_CODE_ID" precision="10" scale="0" not-null="true"/>
         </many-to-one>
         <property name="fileDeletionErrors" type="integer">

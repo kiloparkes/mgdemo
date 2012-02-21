@@ -8,7 +8,7 @@ public class PagedView<E> {
 
 	private NavigationInfo navInfo = new NavigationInfo();
 
-	private List<E> tones;
+	private List<E> items;
 
 	public NavigationInfo getNavInfo() {
 
@@ -21,27 +21,27 @@ public class PagedView<E> {
 
 	}
 
-	public List<E> getTones() {
+	public List<E> getItems() {
 
-		return tones;
-
-	}
-
-	public void setTones(List<E> Tones) {
-
-		this.tones = Tones;
+		return items;
 
 	}
 
-	public Tone getTone(int i) {
+	public void setItems(List<E> items) {
 
-		return (Tone) tones.get(i);
+		this.items = items;
 
 	}
 
-	public void setTone(int i, E Tone) {
+	public Item getItem(int i) {
 
-		this.tones.add(i, Tone);
+		return (Item) items.get(i);
+
+	}
+
+	public void setItem(int i, E Item) {
+
+		this.items.add(i, Item);
 
 	}
 

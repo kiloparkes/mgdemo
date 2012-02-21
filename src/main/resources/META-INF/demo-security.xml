@@ -20,7 +20,7 @@ http://www.springframework.org/schema/security/spring-security-3.0.xsd">
 	  
 	 
 	   
-	   <!-- 
+	   <!--  
 	   		With auto-config enabled, Spring will register HTTP Basic Authentication and 
 	   		Form-Based Login services.
 	   		
@@ -50,8 +50,22 @@ http://www.springframework.org/schema/security/spring-security-3.0.xsd">
 		<intercept-url pattern="/category*" access="ROLE_USER,ROLE_ANONYMOUS" />
 		<intercept-url pattern="/account*" access="ROLE_USER" />
 		<intercept-url pattern="/accountDelete*" access="ROLE_ADMIN" />
+		<intercept-url pattern="/purchase/*" access="ROLE_USER" />
 		
 		<logout logout-success-url="/login.do" />
+		
+		<!-- Configure AccessDenied handling  -->
+		<!-- Without this the user will see the servlet container default 
+		HTTP 403 (Access Denied) page, if after logging in he attempts to access
+		a secure resource to which he is not authorized -->
+		<access-denied-handler error-page="/accessDenied"/>
+		<!--NOTE: If the user is not already authenticated and the accessed resource does not have
+			ROLE_ANONYMOUS, the access denied handler will not be invoked. Instead the user will be 
+			redirected to authentication entry point, and he will see the login page.
+			
+			Note:LoginUrlAuthenticationEntryPoint is responsible for forwarding the user to the 
+			login form.
+		 -->
 		
 		<!-- 
 			<remember-me
@@ -60,14 +74,22 @@ http://www.springframework.org/schema/security/spring-security-3.0.xsd">
 		 -->
 		<remember-me key="mySecret"/>
 		
+		<!--  Disable to simulate session fixation attack
+		<session-management session-fixation-protection="none"/>
+		-->
 		 <!-- 
 	  		Remember that you must always include a wildcard at the end of a URL pattern. Failing 
 	  		to do so will make the URL pattern unable to match a URL that has request parameters.
 	  		As a result, hackers could easily skip the security check by appending an arbitrary 
 	  		request parameter.
+	  		
+	  		IT SEEMS THAT ONLY MATTER IF YOU HAVE WILD CARD ON THE CONTROLLER METHOD BUT NOT
+	  		ON THE SECURITY URL PATTERN. BECAUSE WITHOUT IT HERE THE SECURITY WILL NOT BE
+	  		INVOKED IF YOU HAVE REQUEST LIKE ../account2 which will bypass security but will
+	  		enter the controller method because the request mapping has wild card in the value
 	   	-->
 	   	
-	   	<custom-filter ref="ipFilter" before="FILTER_SECURITY_INTERCEPTOR"/>
+	   	<!--  <custom-filter ref="ipFilter" before="FILTER_SECURITY_INTERCEPTOR"/>-->
 	   	<!-- 
 	   		we'll want to position this filter right before the FilterSecurityInterceptor, which 
 	   		is responsible for determining whether the user has provided correct credentials to 
@@ -81,7 +103,7 @@ http://www.springframework.org/schema/security/spring-security-3.0.xsd">
 		<beans:property name="targetRole" value="ROLE_ADMIN"/>
 		<beans:property name="allowedIPAddresses">
 			<beans:list>
-				<beans:value>192.168.251.110</beans:value>
+				<beans:value>192.168.251.101</beans:value>
 			</beans:list>
 		</beans:property>
 	</beans:bean>
