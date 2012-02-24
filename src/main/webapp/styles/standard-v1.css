@@ -1,0 +1,362 @@
+/* main elements */
+
+body {
+	background-color: #fff55;
+	text-align: center;
+}
+
+table.test{
+	background-color: red;
+	font-size: 9px;
+}
+
+
+#menuBar {
+	/*margin-top:60px;*/
+	font-family: serif;
+	font-weight:bold;
+	font-size: 10px;
+	margin-bottom: 20px;
+	background: #B4CFEC;
+	margin-right: 10px;
+	border-style: hidden;
+	padding-top: 5px;
+	padding-bottom: 15px;
+	border-radius: 30px 30px;
+	-moz-border-radius: 30px 30px;
+}
+/* padding add spaces within the borders of the block */
+/* margin add spaces around the borders of the block, moving the block */
+
+
+#menuBar a {
+	text-decoration: none;
+}
+
+#menuBar a:VISITED {
+}
+
+/* #menuBar.login - without the space this would not have any effect class has lower precedence that ID*/
+/* #menuBar.login means menuBar division with the login class applied*/
+#menuBar  .login{
+	margin-left:5px;
+	float:left;
+	text-align: left;
+}
+
+#menuBar .account {
+	float: right;
+	margin-right: 30px;
+}
+
+#menu {
+	float: left;
+	width: 160px;
+	font-size: 10px;
+	text-align: left;
+	line-height: 95%;
+	border-style: hidden;
+	
+}
+
+#menu h2 {
+	padding-top: 2px;
+	margin-top:0%;
+	/*background-color: #95B9C7;*/
+	padding-bottom: 5px;
+	padding-right: 10px;
+	padding-left: 5px;
+	/* border-bottom-style: inset; */
+	font-size: 15px;
+	
+}
+
+#menu h3 {
+	font-size: 11px;
+}
+
+#menu a {
+	font-family:sans-serif;
+	font-size: 11px;
+	padding-left: 5px;
+	padding-right: 10px;
+	text-decoration: none;
+	color: blue;
+	
+}
+
+#menu a.selected:link{
+	color: #444444 !important;
+	font-weight: bolder;
+ }
+
+ 	
+#access-content {
+	font-family: serif;
+	font-style: oblique;
+	font-size: 15px;
+	text-align:left;
+}
+
+#tbody {
+	margin-left: 190px; /* must be bigger than the width of the side bar to prevent wrapping under the sidebar */
+}
+#heading {
+	padding-left: 5px;
+	border-bottom-style:inset;
+	background: #98AFC7;
+	font-size: 11px;
+	margin-right: 10px;
+	
+	font-family: serif;
+	font-weight:bold;
+	font-size: 10px;
+	height: 25px;
+	text-align: left;
+}
+
+#heading a {
+	font-family:sans-serif;
+	font-size: 11px;
+	text-decoration: none;
+	color: blue;
+}
+
+#pagedInfo {
+	padding-top: 5px;
+	padding-left: 5px;
+	font-family: serif;
+	font-size: 11px;
+	height: 15px;
+	text-align: left;
+}
+
+#pagedInfo a {
+	font-size: 10px;
+	text-decoration: none;
+	color: blue;
+}
+
+#resultInfo {
+	padding-left: 5px;
+	font-size: 12px;
+	margin-right: 10px;
+	text-align: left;
+	padding-bottom: 10px;
+}
+
+#resultInfo a {
+	font-family:sans-serif;
+	font-size: 11px;
+	text-decoration: none;
+	color: blue;
+}
+
+#content {
+	font-family: serif;
+	font-style: oblique;
+	font-size: 15px;
+	text-align:left;
+	margin-right: 10px;
+	/*margin-left: 190px; /* this must be greater than the menu div's width because it's position starts right after the menu block*/
+}
+
+	
+#footer {
+	/* fix the distance from the bottom of the browser using the position and bottom*/
+	/* could also use absolute but this may cause the footer to ride up on top of 
+	other elements if you resize the window so that those element go off the bottom */
+	position: fixed;
+	bottom: 0px;
+	left:50%;
+	/*  */
+	float: left;
+}
+
+#accessBar {
+	background-color: #CCFFCC;
+}
+
+#top {
+	width: 100%;
+	height: 60px;
+}
+
+#top .logo {
+	font-size:30px;
+	float: left;
+	border-style: none;
+}
+
+#top .search {
+	font-size:15px;
+	float: right; 
+	margin-top: 25px;
+	margin-right: 100px;
+}
+
+#top .preview {
+	font-size:15px;
+	float: right; 
+	margin-left: 100px;
+	margin-top: 25px;
+}
+ 
+/*++++++++ Tips from Amazon ******************************************************/
+
+#feedback, #hlbcc, #hlb-upsell {
+    width: 900px;
+}
+
+#feedback, #hlbcc, #hlb-upsell {
+    margin-left: auto;
+    margin-right: auto;
+    text-align: left;
+}
+
+#feedback, #hlbcc, #hlb-upsell, #hl-feedback h4 {
+    font-family: verdana,helvetica,arial,sans-serif;
+    font-size: 11px;
+}
+
+#confirm {
+    margin-bottom: 10px;
+}
+#confirm-text {
+    font-weight: bold;
+}
+
+#confirm-text, #hl-confirm-text-previously {
+    color: #009900;
+    font-family: arial,helvetica,sans-serif;
+    font-size: 22px;
+}
+
+
+.s_confirmCheck {
+    background-position: 0 0;
+    height: 25px;
+    width: 25px;
+}
+
+.hucSprite {
+    display: inline-block;
+}
+
+#confirm-text .check {
+    margin-right: 8px;
+    position: static;
+    vertical-align: top;
+}
+
+#items {
+    width: 334px;
+}
+
+#items .item {
+    margin: 0 0 10px;
+}
+
+#items {
+    float: left;
+    line-height: 15px;
+    position: relative;
+}
+
+.item-title {
+    font-weight: bold;
+}
+
+.item-byline {
+    color: #000000;
+}
+
+.item-byline, .item-binding, .used-block {
+    line-height: 15px;
+}
+
+.item .item-stats {
+    float: left;
+    width: 200px;
+}
+
+.item .price {
+    float: left;
+}
+
+.price {
+    color: #990000;
+    font-family: arial,helvetica,sans-serif;
+    font-size: 12px;
+    white-space: nowrap;
+}
+.item-stats .price {
+    margin-bottom: 5px;
+    margin-top: 5px;
+}
+
+
+#cart {
+    color: #000000;
+    float: right;
+    font-size: 12px;
+    margin-bottom: 10px;
+    margin-left: 10px;
+    position: relative;
+}
+#cart .subcart-box {
+    margin-bottom: 0;
+}
+
+#cart-stats {
+    display: inline;
+    float: left;
+    font-size: 13px;
+    line-height: 15px;
+    margin-left: 5px;
+}
+#cart-subtotal, #cart-itemcount {
+    font-weight: bold;
+}
+
+#next-steps {
+    display: inline;
+    float: right;
+    margin-right: 5px;
+}
+
+.cBox {
+    margin-bottom: 15px;
+    position: relative;
+    width: 100%;
+}
+
+.cBoxInner {
+    padding: 9px;
+}
+
+.primary, .secEyebrow h2 {
+    background-color: #EAF3FE;
+}
+
+
+#cart .subcart-box {
+    margin-bottom: 0;
+}
+
+.cart-button {
+    margin-right: 10px;
+}
+
+
+.s_editCart {
+    background-position: -30px -60px;
+    height: 27px;
+    width: 120px;
+}
+
+.s_checkout {
+    background-position: -30px 0;
+    height: 27px;
+    width: 149px;
+}
