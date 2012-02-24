@@ -5,124 +5,105 @@ body {
 	text-align: center;
 }
 
-table.test{
-	background-color: red;
-	font-size: 9px;
+#heading {
+	/*NOTE:If you you make this a positioned element - the element following this 
+	in the HTML code will will have to be position as well otherwise the non-position
+	element will start at the top overlapping the header since HTML flow is not 
+	aware if positioned elements */
+	width: 100%;
+	margin-top: 15px;
+	height: 60px;
 }
 
+#heading #logo {
+	float: left;
+	margin-left: 5px;
+	border-style: none;
+	
+}
+
+#heading #search {
+	float: right;
+	margin-right: 20px;
+	margin-top: 15px;
+}
 
 #menuBar {
-	/*margin-top:60px;*/
+	
+	/*NOTE: Without this clear property, the menuBar would float up in between the heading
+	logo and search blocks because these two are using floats element are using floats */
+	/* The alternative is to give the heading a height, then the menuBar will flow immediately
+	beneath the heading */
+	
+	/* clear: both; */
+
+	width: 100%;
 	font-family: serif;
 	font-weight:bold;
 	font-size: 10px;
-	margin-bottom: 20px;
-	background: #B4CFEC;
-	margin-right: 10px;
-	border-style: hidden;
+	
+	/* NOTE: Without the padding you will not see this background element. You
+	would see the child element - login and account links, but not the background bar
+	Alternative is to set the height property, but avoid using height */
+	
 	padding-top: 5px;
 	padding-bottom: 15px;
+	background: #B4CFEC;
 	border-radius: 30px 30px;
 	-moz-border-radius: 30px 30px;
-}
-/* padding add spaces within the borders of the block */
-/* margin add spaces around the borders of the block, moving the block */
+	
 
+	margin-bottom: 20px;
+	margin-right: 10px;
+	border-style: hidden;
 
-#menuBar a {
-	text-decoration: none;
-}
-
-#menuBar a:VISITED {
 }
 
-/* #menuBar.login - without the space this would not have any effect class has lower precedence that ID*/
-/* #menuBar.login means menuBar division with the login class applied*/
-#menuBar  .login{
-	margin-left:5px;
-	float:left;
+#menuBar #login {
+	margin-left: 20px;
+	float: left;
 	text-align: left;
 }
 
-#menuBar .account {
+#menuBar #account{
 	float: right;
-	margin-right: 30px;
+	margin-right: 20px;
 }
 
-#menu {
-	float: left;
-	width: 160px;
+#content {
+	width: 100%;
+	clear: both;
+}
+
+#content #side-bars {
 	font-size: 10px;
 	text-align: left;
 	line-height: 95%;
-	border-style: hidden;
-	
+	background-color: black;
 }
 
-#menu h2 {
-	padding-top: 2px;
-	margin-top:0%;
-	/*background-color: #95B9C7;*/
-	padding-bottom: 5px;
-	padding-right: 10px;
-	padding-left: 5px;
-	/* border-bottom-style: inset; */
-	font-size: 15px;
-	
+
+#content #l-side-bar {
+	float: left;
+	padding-right: 20px; 
 }
 
-#menu h3 {
-	font-size: 11px;
+#content #r-side-bar {
+	float: right;
+	padding-left: 30px;
+	padding-right: 20px;
 }
 
-#menu a {
-	font-family:sans-serif;
-	font-size: 11px;
-	padding-left: 5px;
-	padding-right: 10px;
-	text-decoration: none;
-	color: blue;
-	
-}
-
-#menu a.selected:link{
-	color: #444444 !important;
-	font-weight: bolder;
- }
-
- 	
-#access-content {
-	font-family: serif;
-	font-style: oblique;
-	font-size: 15px;
-	text-align:left;
-}
-
-#tbody {
-	margin-left: 190px;
-}
-#heading {
-	padding-left: 5px;
-	border-bottom-style:inset;
-	background: #98AFC7;
-	font-size: 11px;
-	margin-right: 10px;
-	
-	font-family: serif;
-	font-weight:bold;
-	font-size: 10px;
-	height: 25px;
+#content  #mainContent {
 	text-align: left;
+	padding-top: 10px;
+	/* use the overflow property to prevent the main content text, when longer than side bar, to
+	wrap under side bar
+	*/
+	overflow: hidden;
 }
 
-#heading a {
-	font-family:sans-serif;
-	font-size: 11px;
-	text-decoration: none;
-	color: blue;
-}
-
-#pagedInfo {
+#mainContent #pageInfo {
 	padding-top: 5px;
 	padding-left: 5px;
 	font-family: serif;
@@ -137,65 +118,14 @@ table.test{
 	color: blue;
 }
 
-#resultInfo {
-	padding-left: 5px;
-	font-size: 12px;
-	margin-right: 10px;
-	text-align: left;
-	padding-bottom: 10px;
-}
-
-#resultInfo a {
-	font-family:sans-serif;
-	font-size: 11px;
-	text-decoration: none;
-	color: blue;
-}
-
-#content {
-	font-family: serif;
-	font-style: oblique;
-	font-size: 15px;
-	text-align:left;
-	margin-right: 10px;
-	/*margin-left: 190px; /* this must be greater than the menu div's width because it's position starts right after the menu block*/
-}
-
-	
 #footer {
-	float: left;
-	margin-bottom: 10px:
+	/* I want the footer to be lower than the longest side bar, but this will not be the case
+	when the main content is higher up on the page that the bottom of the side bar. The footer 
+	would float up under the main content block, unless I clear floating */
+	clear: both;
 }
 
-#accessBar {
-	background-color: #CCFFCC;
-}
 
-#top {
-	width: 100%;
-	height: 60px;
-}
-
-#top .logo {
-	font-size:30px;
-	float: left;
-	border-style: none;
-}
-
-#top .search {
-	font-size:15px;
-	/*float: right; */
-	margin-left: 100px;
-	margin-top: 25px;
-}
-
-#top .preview {
-	font-size:15px;
-	float: right; 
-	margin-left: 100px;
-	margin-top: 25px;
-}
- 
 /*++++++++ Tips from Amazon ******************************************************/
 
 #feedback, #hlbcc, #hlb-upsell {

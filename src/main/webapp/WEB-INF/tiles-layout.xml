@@ -10,6 +10,8 @@
         <put-attribute name="menu" value="/WEB-INF/views/categories.jsp" />
         <put-attribute name="content" value="" />
         <put-attribute name="footer" value="/WEB-INF/views/tiles/footer.jsp" />
+        <put-attribute name="pagedInfo" value="" />
+        <put-attribute name="resultInfo" value="" />
     </definition>
  
     <definition name="categories" extends="base.definition">
@@ -33,6 +35,7 @@
         <put-attribute name="footer" value="/WEB-INF/views/tiles/footer.jsp" />
     </definition>
     
+    <!--  
     <definition name="searchResult" template="/WEB-INF/views/tiles/search-result-layout.jsp">
         <put-attribute name="title" value="Media Manager" />
         <put-attribute name="menuBar" value="/WEB-INF/views/tiles/menuBar.jsp" />
@@ -43,9 +46,16 @@
         <put-attribute name="footer" value="/WEB-INF/views/tiles/footer.jsp" />
         
     </definition>
+    -->
+    
+    <definition name="searchResult" extends="base.definition">
+        <put-attribute name="title" value="Media Manager" />
+        <put-attribute name="menuBar" value="/WEB-INF/views/tiles/menuBar.jsp" />
+        <put-attribute name="heading" value="/WEB-INF/views/heading.jsp" />
+        <put-attribute name="resultInfo" value="/WEB-INF/views/search-result-info.jsp" />      
+    </definition>
     
     <definition name="categoryResult" extends="searchResult">
-        <put-attribute name="content" value="/WEB-INF/views/tiles/main.jsp" />
     </definition>
     
      <definition name="toneResult" extends="searchResult">

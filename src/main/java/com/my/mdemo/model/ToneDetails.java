@@ -6,7 +6,7 @@ package com.my.mdemo.model;
 
 
 
-public class ToneDetails implements java.io.Serializable {
+public class ToneDetails implements java.io.Serializable, ItemDetails {
 
 	private static final long serialVersionUID = -8715850691459581543L;
 	private Integer id;
@@ -99,5 +99,17 @@ public class ToneDetails implements java.io.Serializable {
 	@Override
 	public String toString() {
 		return id.toString();
+	}
+
+	@Override
+	public String getLanguageCode() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public void setLanguageCode(String languageCode) {
+		// TODO Auto-generated method stub
+		
 	}
 }

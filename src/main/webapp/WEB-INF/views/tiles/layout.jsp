@@ -23,33 +23,37 @@
 
 </head>
 <body>
-	<div id="top">
-		<div class="logo">
+	<div id="heading">
+		<div id="logo">
 			<a href="  <c:url value="/category" /> "><img src='<c:url value="/images/mdemo_logo.jpg"/>' alt="IMG" > </a>
 		</div>
-		<div class="search">
+		<div id="search">
 			<form action="">
 				<input name="search" type="text">
 				<input type="submit" name="search" value="search">
 			</form>
 		</div>
-		<!--  
-		<div class"preview">
-			<audio src='<c:url value="/audios/four.wav"/>' controls="controls">
-			</audio>
-		</div>
-		-->
 	</div>
+	
 	<div id="menuBar">
 		<tiles:insertAttribute name="menuBar" />
 	</div>
-	<div id="menu">
-        <tiles:insertAttribute name='menu'/>
-    </div><!--END: Menu-->
-    <div id="content">
-        <tiles:insertAttribute name='content'/>
+	
+	<div id="content">
+		<div id="side-bars">
+			<tiles:insertAttribute name='menu'/>
+		</div>
+		<div id="mainContent">
+				<div id="pagedInfo">
+					<tiles:insertAttribute name="pagedInfo" />
+				</div>
+				<div id="resultInfo">
+        			<tiles:insertAttribute name='resultInfo'/>
+    			</div>
+        	<tiles:insertAttribute name='content'/>
+        </div>
     </div>
-     <div id="footer">
+    <div id="footer">
         <tiles:insertAttribute name='footer'/>
     </div>
 </body>

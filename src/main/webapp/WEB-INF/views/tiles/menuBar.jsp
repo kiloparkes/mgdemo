@@ -2,7 +2,7 @@
 <%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 <% String contextPath = request.getContextPath(); %>
 
-	<div class="login">
+	<div id="login">
 	<sec:authorize ifAnyGranted="ROLE_ANONYMOUS">
 		<!-- NOTE: On Context relative (with leading slash) and page relative paths
 			When the servletpath = /category, the page relative URI is converted 
@@ -23,6 +23,6 @@
    </sec:authorize>
 	
 	</div>
-	<div class="account">
+	<div id="account">
 			<a href="<c:url value="/account"/>">My Account</a>
 	</div>

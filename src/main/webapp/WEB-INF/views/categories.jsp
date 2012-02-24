@@ -2,6 +2,7 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
+<div id="l-side-bar">
 <h2>Browse Categories</h2>
 <br/>
 	
@@ -41,3 +42,14 @@
 		<a href="#"> <c:out value="${cat.displayName}"></c:out> </a>
 <br></br>
 </c:forEach>
+
+</div>
+
+
+<div id="r-side-bar">
+	<h3>Most Popular</h3>
+	<c:forEach items="${categorylist}" var="cat" >
+		<a href="#"> <c:out value="${cat.displayName}"></c:out> </a>
+	<br></br>
+</c:forEach>
+</div>

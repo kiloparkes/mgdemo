@@ -334,7 +334,19 @@ public class Tone implements Item,  java.io.Serializable {
 		this.purged = purged;
 	}
 
-	
+	@Override
+	public ToneDetails getDetails(Language language) {
+		// TODO Auto-generated method stub
+		ToneDetails td = new ToneDetails();
+		Map<Language, ToneDetails>  dMap = this.details;
+		for (Language l : dMap.keySet()) {
+			if( l.getCode().equalsIgnoreCase("en")){
+				td = dMap.get(l);
+				break;
+			}		
+		}
+		return td;
+	}
 }
 
 
