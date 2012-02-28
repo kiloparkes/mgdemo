@@ -1,11 +1,18 @@
 /* main elements */
 
+/*
+Notes:
+1. padding - extends the size of the element within the boundaries of the containing element
+2. margin - moves the element within the boundaries of the containing element. You can use negative
+	margins to move beyond the boundaries of the containing element
+
+*/
 body {
 	background-color: #fff55;
 	text-align: center;
 }
 
-#heading {
+#header {
 	/*NOTE:If you you make this a positioned element - the element following this 
 	in the HTML code will will have to be position as well otherwise the non-position
 	element will start at the top overlapping the header since HTML flow is not 
@@ -15,14 +22,14 @@ body {
 	height: 60px;
 }
 
-#heading #logo {
+#header #logo {
 	float: left;
 	margin-left: 5px;
 	border-style: none;
 	
 }
 
-#heading #search {
+#header #search {
 	float: right;
 	margin-right: 20px;
 	margin-top: 15px;
@@ -96,26 +103,59 @@ body {
 
 #content  #mainContent {
 	text-align: left;
-	padding-top: 10px;
+	padding-top: 0px;
 	/* use the overflow property to prevent the main content text, when longer than side bar, to
 	wrap under side bar
 	*/
 	overflow: hidden;
 }
 
-#mainContent #pageInfo {
-	padding-top: 5px;
+table.items {
+	font-size: 10px;
+	text-align: left;
+	font-family: serif;
+}
+
+#mainContent #trail {
+	font-size: 10px;
+}
+
+/* Note: This is one way to give common properties to different selectors */
+#mainContent #pagedInfo, #resultInfo {
+	padding-top: 5px; 
 	padding-left: 5px;
 	font-family: serif;
-	font-size: 11px;
-	height: 15px;
+	font-size: 10px;
 	text-align: left;
+	font-weight: bold;
+	background-color: #D3D3D3;
 }
+
+#pagedInfo {
+	padding-bottom: 5px;
+}
+
 
 #pagedInfo a {
 	font-size: 10px;
+	/*text-decoration: none; */
+	color: blue;
+}
+
+#info #resultInfo {
+	padding-bottom: 20px;
+}
+
+#resultInfo a {
+	font-family:sans-serif;
+	font-size: 11px;
 	text-decoration: none;
 	color: blue;
+}
+
+.clear {
+	/* prevents text running under shorter floated blocks */
+	clear: both;
 }
 
 #footer {

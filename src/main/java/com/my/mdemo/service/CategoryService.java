@@ -20,4 +20,14 @@ public class CategoryService {
 	public Category getCategory(int id){
 		return this.categoryDao.getCategory(id);
 	}
+	
+	public int getSubCategoriesCount( int parentId){
+		return this.categoryDao.getSubCategoriesCount(parentId);
+	}
+	
+	 public List<Category> getSubCategories(int parentId, int firstResult, 
+			 			int maxResults ){
+		 return this.categoryDao.getSubCategories(parentId, firstResult, maxResults);
+	 }
+
 }

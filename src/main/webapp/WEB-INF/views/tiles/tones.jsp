@@ -8,7 +8,7 @@
 				<img src='<c:url value="/images/kira.jpg"/>' alt="IMG" >
 			</td>
 			<td>
-				<table>
+				<table >
 					<tr>
 						<td>
 							<c:forEach items="${t.details}" var="entry">

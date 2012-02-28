@@ -10,6 +10,7 @@
         <put-attribute name="menu" value="/WEB-INF/views/categories.jsp" />
         <put-attribute name="content" value="" />
         <put-attribute name="footer" value="/WEB-INF/views/tiles/footer.jsp" />
+        <put-attribute name="trails" value="" />
         <put-attribute name="pagedInfo" value="" />
         <put-attribute name="resultInfo" value="" />
     </definition>
@@ -51,7 +52,7 @@
     <definition name="searchResult" extends="base.definition">
         <put-attribute name="title" value="Media Manager" />
         <put-attribute name="menuBar" value="/WEB-INF/views/tiles/menuBar.jsp" />
-        <put-attribute name="heading" value="/WEB-INF/views/heading.jsp" />
+        <put-attribute name="trails" value="/WEB-INF/views/trail.jsp" />
         <put-attribute name="resultInfo" value="/WEB-INF/views/search-result-info.jsp" />      
     </definition>
     
@@ -62,4 +63,10 @@
      	<put-attribute name="pagedInfo" value="/WEB-INF/views/paging.jsp" />
         <put-attribute name="content" value="/WEB-INF/views/tiles/tones.jsp" />
     </definition>
+    
+    <definition name="categoriesPage" extends="searchResult">
+    	<put-attribute name="pagedInfo" value="/WEB-INF/views/paging.jsp" />
+    	<put-attribute name="content" value="/WEB-INF/views/categoriesPage.jsp" />
+    </definition>
+    
 </tiles-definitions>

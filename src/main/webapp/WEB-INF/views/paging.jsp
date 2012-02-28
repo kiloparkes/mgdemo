@@ -3,8 +3,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 
-
-	<b>Page:</b>
+	Page:
 	<!-- 
 	<c:if test="${!pagedInfo.navInfo.firstPage}">
 		<a href="newcustlist.htm?page=0">First</a>&nbsp;
@@ -14,7 +13,7 @@
 	<c:forEach var="i" items="${pagedInfo.navInfo.indexList}">
 		<c:choose>
 			<c:when test="${i != pagedInfo.navInfo.currentPage}">
-				<c:url value="/category/search" var="curl">
+				<c:url value="${pageInfo.url}" var="curl">
 					<c:param name="cid" value="${category.id}"/>
 					<c:param name="page" value="${i}"/>
 				</c:url>
@@ -22,7 +21,7 @@
 				&nbsp;
 			</c:when>
 			<c:otherwise>
-				<b>${i}</b>&nbsp;
+				${i}&nbsp;
 			</c:otherwise>
 		</c:choose>
 	</c:forEach>

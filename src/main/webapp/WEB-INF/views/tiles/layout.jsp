@@ -23,7 +23,7 @@
 
 </head>
 <body>
-	<div id="heading">
+	<div id="header">
 		<div id="logo">
 			<a href="  <c:url value="/category" /> "><img src='<c:url value="/images/mdemo_logo.jpg"/>' alt="IMG" > </a>
 		</div>
@@ -39,19 +39,39 @@
 		<tiles:insertAttribute name="menuBar" />
 	</div>
 	
+	<!-- 
+		Notes: If the layout contains an attribute that is not in the definition in the tile XML file
+		you will get an attribute not found error. Therefore we use conditional to selectively insert
+		attributes.	
+	 -->
 	<div id="content">
 		<div id="side-bars">
 			<tiles:insertAttribute name='menu'/>
 		</div>
 		<div id="mainContent">
+			<c:if test="${not empty displayTrail}">
+				<div id="trail">
+					<tiles:insertAttribute name="trails" />
+				</div>
+			</c:if>
+			<c:if test="${not empty displayPaging}">
 				<div id="pagedInfo">
 					<tiles:insertAttribute name="pagedInfo" />
 				</div>
+			</c:if>
+			<c:if test="${not empty displaySubs && displaySubs }">
 				<div id="resultInfo">
         			<tiles:insertAttribute name='resultInfo'/>
     			</div>
-        	<tiles:insertAttribute name='content'/>
-        </div>
+    		</c:if>
+    		
+    		<div>
+        		<tiles:insertAttribute name='content'/>
+        	</div>
+		</div>
+		
+    </div>
+    <div class="clear">
     </div>
     <div id="footer">
         <tiles:insertAttribute name='footer'/>

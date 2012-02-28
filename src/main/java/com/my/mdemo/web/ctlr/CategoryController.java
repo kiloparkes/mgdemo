@@ -75,12 +75,14 @@ public class CategoryController {
 	public String search(@RequestParam("cid") int id, Model model, HttpServletRequest request){
 		
 		String view = "categoryResult";
+		boolean displayPaging = false;
+		boolean displaySubs = true;
 		
 		Category c = categoryService.getCategory(id);
 		if(c!= null && c.getChildrenCount() == 0)
 		{
 			// This is a leaf category... Only leaf categories can contain tones
-			PagedView<Tone> p = new PagedView<Tone>();
+			PagedView<Tone> p = new PagedView<Tone>("/category/search");
 			int cnt = toneService.getTonesOfCategoryCount(id);
 			p.getNavInfo().setRowCount(cnt);
 			String page = (String)request.getParameter("page");
@@ -96,16 +98,60 @@ public class CategoryController {
 			p.setItems(tl);
 			
 			model.addAttribute("pagedInfo", p);
-			
 			view = "toneResult";
+			
+			displayPaging = true;
+			displaySubs = false;
+			model.addAttribute("displayPaging", displayPaging);
 		}
 		
-		model.addAttribute("category", c);
+		model.addAttribute("category", c);		
+		model.addAttribute("displayTrail", true);
+		model.addAttribute("displaySubs", displaySubs);
+		
+		
 		prepareTrail(c, model);
 		
 		return view;
 	}
 	
+	@SuppressWarnings("unchecked")
+	@RequestMapping( value="/category/more", method=RequestMethod.GET)
+	public String more(
+				@RequestParam("cid") int id,
+				@RequestParam("page") Integer page,
+				Model model, 
+				HttpServletRequest request){
+		
+		boolean isPaging = true;
+		
+		Category c = categoryService.getCategory(id);
+		int cnt = categoryService.getSubCategoriesCount(id);
+		
+		PagedView<Category> p = new PagedView<Category>("/category/more");
+		p.getNavInfo().setPageSize(5);
+		
+		p.getNavInfo().setRowCount(cnt);
+		
+		if (null == page){
+			p.getNavInfo().setCurrentPage(1);
+		}
+		else{
+			p.getNavInfo().setCurrentPage(page);
+		}
+		
+		int firstResult = (p.getNavInfo().getCurrentPage()-1)*p.getNavInfo().getPageSize();
+		int maxResults = p.getNavInfo().getPageSize();
+		List<Category> subCategories = 
+			categoryService.getSubCategories(id, firstResult, maxResults);
+		
+		p.setItems(subCategories);
+		
+		model.addAttribute("displayPaging", isPaging);
+		model.addAttribute("category", c);
+		model.addAttribute("pagedInfo", p);
+		return "categoriesPage";
+	}
 	
 	@SuppressWarnings("unchecked")
 	private void prepareTrail(Category c, Model model){

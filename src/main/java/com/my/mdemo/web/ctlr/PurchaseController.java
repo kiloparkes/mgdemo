@@ -2,9 +2,6 @@ package com.my.mdemo.web.ctlr;
 
 import java.io.Reader;
 import java.io.Writer;
-import java.util.ArrayList;
-import java.util.Enumeration;
-import java.util.List;
 import java.util.Locale;
 import java.util.Map;
 
@@ -15,8 +12,6 @@ import javax.servlet.http.HttpSession;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;

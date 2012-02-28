@@ -9,7 +9,15 @@ public class PagedView<E> {
 	private NavigationInfo navInfo = new NavigationInfo();
 
 	private List<E> items;
+	
+	private String url;
 
+	
+	public PagedView(String url) {
+		this.url = url;
+	}
+	
+	
 	public NavigationInfo getNavInfo() {
 
 		return navInfo;
@@ -45,4 +53,7 @@ public class PagedView<E> {
 
 	}
 
+	public String getUrl() {
+		return url;
+	}
 }
