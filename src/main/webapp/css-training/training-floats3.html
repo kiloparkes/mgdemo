@@ -1,0 +1,175 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+
+ <html>
+ 	<head>
+ 		<style type="text/css">
+ 			body {
+ 			}
+ 			
+ 			.notes {
+ 				font-family: serif;
+ 				font-size: 14px;
+ 				font-weight: bold;
+ 			}
+ 			
+ 			.notes p {
+ 			
+ 			}
+ 			
+ 			#banner {
+ 				background-color: blue;
+ 				margin-bottom: 10px;
+ 				font-weight: bold;
+ 				font-size: 18px;
+ 			}
+ 		
+ 			#left2 {
+ 				margin-bottom: 10px;
+ 				float: left;
+ 			}
+ 			
+ 			#right2 {
+ 				margin-bottom: 10px;
+ 				float: right;
+ 			}
+ 			
+ 			#main2 {
+ 				margin-left: 10px;
+ 			}
+ 		</style>
+ 		
+ 		<title> CSS and HTML Training! </title>
+ 	</head>
+
+
+ 	<body>
+ 	
+ 		<h2>Controlling Height</h2>
+ 		<div id="banner">This is my banner!</div>
+ 		<div id="left2" style="background: url(top.png) repeat-y;">
+ 			<strong>This is my left side!</strong>
+ 			<ul>
+ 				<li> Item 1 </li>
+ 				<li> Item 2 </li>
+ 				<li> Item 3 </li>
+ 			</ul>
+ 		</div>
+ 		<div id="right2" style="background-color: lime;">
+ 			<strong>This is my right side!</strong>
+ 			<ul>
+ 				<li> Item A </li>
+ 				<li> Item B </li>
+ 				<li> Item C </li>
+ 			</ul>
+ 		</div>
+ 		<div id="main" style="margin-left: 200px;">
+ 			<strong>This is my Main Content!</strong>
+ 			<p> 
+ 				It’s perfectly possible to float every column, not just the left and right sidebars. You
+could float the first sidebar to the left, the middle column to the left, and the right
+sidebar to the right, as shown in Figure 12-2, top. This approach lets you put more
+than three columns in your design.
+It’s perfectly possible to float every column, not just the left and right sidebars. You
+could float the first sidebar to the left, the middle column to the left, and the right
+sidebar to the right, as shown in Figure 12-2, top. This approach lets you put more
+than three columns in your design.
+It’s perfectly possible to float every column, not just the left and right sidebars. You
+could float the first sidebar to the left, the middle column to the left, and the right
+sidebar to the right, as shown in Figure 12-2, top. This approach lets you put more
+than three columns in your design.
+ 			</p>
+ 		</div>
+ 		
+ 		<div  class="notes">
+ 			<p> Notice that the background image for the left side bar is not as long as the main text. It stops short.
+ 			This is because a box is as long as the containing text unless you specify a height. Therefore, even though
+ 			we have repeat-y for the image it only goes as far at the height of the containing text. 
+ 			<strong>The solution</strong> is to wrap the side bar and content and add the image to the
+ 			wrapper with repeat-y</p>
+ 		</div>
+ 		
+ 		<!-- Wrapping  -->
+ 		<div id="banner">This is my banner!</div>
+ 		<div id="wrap1" style="background: url(top.png) repeat-y">
+ 			<div id="left2">
+ 			<strong>This is my left side!</strong>
+ 			<ul>
+ 				<li> Item 1 </li>
+ 				<li> Item 2 </li>
+ 				<li> Item 3 </li>
+ 			</ul>
+ 		</div>
+ 		<div id="right2" style="background: url(top.png) repeat-y; right top">
+ 			<strong>This is my right side!</strong>
+ 			<ul>
+ 				<li> Item A </li>
+ 				<li> Item B </li>
+ 				<li> Item C </li>
+ 			</ul>
+ 		</div>
+ 		<div id="main" style="margin-left: 200px;">
+ 			<strong>This is my Main Content!</strong>
+ 			<p> 
+ 				It’s perfectly possible to float every column, not just the left and right sidebars. You
+could float the first sidebar to the left, the middle column to the left, and the right
+sidebar to the right, as shown in Figure 12-2, top. This approach lets you put more
+than three columns in your design.
+It’s perfectly possible to float every column, not just the left and right sidebars. You
+could float the first sidebar to the left, the middle column to the left, and the right
+sidebar to the right, as shown in Figure 12-2, top. This approach lets you put more
+than three columns in your design.
+It’s perfectly possible to float every column, not just the left and right sidebars. You
+could float the first sidebar to the left, the middle column to the left, and the right
+sidebar to the right, as shown in Figure 12-2, top. This approach lets you put more
+than three columns in your design.
+ 			</p>
+ 		</div>
+ 	</div>
+ 	
+ 	<div class="notes">
+ 		<p> To enable both right and left side-bars to extent with the main content we need to
+ 		have an inner and an outer wrapper. 
+ 		</p>
+ 	</div>
+ 	<div id="wrapper2"  style="background: url(top.png) repeat-y right top">
+ 		<!-- Using two Wrappers  -->
+ 		<div id="banner">This is my banner!</div>
+ 		<div id="wrap1" style="background: url(top.png) repeat-y left top">
+ 			<div id="left2">
+ 			<strong>This is my left side!</strong>
+ 			<ul>
+ 				<li> Item 1 </li>
+ 				<li> Item 2 </li>
+ 				<li> Item 3 </li>
+ 			</ul>
+ 		</div>
+ 		<div id="right2" >
+ 			<strong>This is my right side!</strong>
+ 			<ul>
+ 				<li> Item A </li>
+ 				<li> Item B </li>
+ 				<li> Item C </li>
+ 			</ul>
+ 		</div>
+ 		<div id="main" style="margin-left: 200px; margin-right: 200px;">
+ 			<strong>This is my Main Content!</strong>
+ 			<p> 
+ 				It’s perfectly possible to float every column, not just the left and right sidebars. You
+could float the first sidebar to the left, the middle column to the left, and the right
+sidebar to the right, as shown in Figure 12-2, top. This approach lets you put more
+than three columns in your design.
+It’s perfectly possible to float every column, not just the left and right sidebars. You
+could float the first sidebar to the left, the middle column to the left, and the right
+sidebar to the right, as shown in Figure 12-2, top. This approach lets you put more
+than three columns in your design.
+It’s perfectly possible to float every column, not just the left and right sidebars. You
+could float the first sidebar to the left, the middle column to the left, and the right
+sidebar to the right, as shown in Figure 12-2, top. This approach lets you put more
+than three columns in your design.
+ 			</p>
+ 		</div>
+ 	</div>
+ 	
+ 	</div>
+ 	</body>
+ </html>

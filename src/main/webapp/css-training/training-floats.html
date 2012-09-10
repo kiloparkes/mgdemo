@@ -1,0 +1,135 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+
+ <html>
+ 	<head>
+ 		<style type="text/css">
+ 			body {
+ 				background-color: blue;
+ 			}
+ 			.flo {
+ 				padding: 0em;  /* top, right, bottom, and left. */
+ 				margin: 0em;
+ 				
+ 				border-style: solid;
+ 				border-color: white;
+ 				border: 1em 1em 1em 1em; 
+ 				width: 50%;
+ 				background: maroon;
+ 				color: white;
+ 				float: right;
+ 	
+ 			}
+ 			
+ 			.p1 {
+ 				background-color: gray;
+ 				/*font-size: 28px; */
+ 			}
+ 			
+ 			.nor {
+ 				padding: 0em;  /* top, right, bottom, and left. */
+ 				margin: 0em;
+ 				
+ 				border-style: solid;
+ 				border-color: white;
+ 				border: 1em 1em 1em 1em; 
+ 				width: 50%;
+ 				background: maroon;
+ 				color: white;
+ 	
+ 			}
+ 			.notes {
+ 				font-family: serif;
+ 				font-size: 14px;
+ 				font-weight: bold;
+ 			}
+ 			
+ 			.notes p {
+ 			
+ 			}
+ 			
+ 		</style>
+ 		
+ 		<title> CSS and HTML Training! </title>
+ 	</head>
+
+
+ 	<body>
+ 		<div class="notes">
+ 		<p>HTML normally flows from the top of the browser window down to the bottom,
+one headline, paragraph, or block-level element on top of another. </p>
+
+ 		<p> The float property moves an element to either the left or right. In the process, content
+below the floated element moves up and wraps around the float</p>
+
+
+<P> Floated elements move to the left or right edge of their containing element. In some
+cases, this just means that the element moves to the left or right edge of the
+browser window. However if you float an element that’s inside another tag with a
+set width or position on a web page, then the float will go to the left or right edge
+of that tag—the floated element’s “container.”</P>
+
+</div>
+ 		<div class="nor">
+ 			<p class="p1"> A paragraph inside a division element. No Margins !! </p>
+ 		</div>
+ 		<div >
+ 			<img alt="" src="right_tab.png">
+ 		</div>
+ 		
+ 		<div>
+ 			<P> Here, the margin shorthand sets the top margin to 0, the right margin to –15
+pixels, bottom margin to 20 pixels, and the left margin to –15 pixels. The bottom
+margin just adds a bit of space between the headline and the paragraph that
+follows. The next trick is the use of negative values for the left and right margins.
+As mentioned on page 156, you can assign a negative margin to any element.
+This property pulls the element out toward the direction of the margin—
+in this case, the headline extends 15 pixels to the left and 15 pixels to the right,
+actually expanding the headline and pulling it out over the body tag’s padding.</P>
+ 		</div>
+ 		
+ 		<div class="notes">
+ 			Below is the floated version of the above normal flow. The first paragraph is floated
+ 			to the right and the image is floated to the left.
+ 		</div>
+ 		<div class="flo">
+ 			<p class="p1"> A paragraph inside a division element. No Margins !! </p>
+ 		</div>
+ 		<div style="float:left;">
+ 			<img alt="" src="right_tab.png">
+ 		</div>
+ 		
+ 		<div>
+ 			<P> Here, the margin shorthand sets the top margin to 0, the right margin to –15
+pixels, bottom margin to 20 pixels, and the left margin to –15 pixels. The bottom
+margin just adds a bit of space between the headline and the paragraph that
+follows. The next trick is the use of negative values for the left and right margins.
+As mentioned on page 156, you can assign a negative margin to any element.
+This property pulls the element out toward the direction of the margin—
+in this case, the headline extends 15 pixels to the left and 15 pixels to the right,
+actually expanding the headline and pulling it out over the body tag’s padding.</P>
+ 		</div>
+ 		
+ 		<div class="notes">
+ 			In the below the first paragraph is floated to the right but the image is not floated. In this case the 
+ 			bottom paragraph stays put. Since it is not immediately following the floated element.
+ 		</div>
+ 		
+ 		<div class="flo">
+ 			<p class="p1"> A paragraph inside a division element. No Margins !! </p>
+ 		</div>
+ 		<div >
+ 			<img alt="" src="right_tab.png">
+ 		</div>
+ 		
+ 		<div>
+ 			<P> Here, the margin shorthand sets the top margin to 0, the right margin to –15
+pixels, bottom margin to 20 pixels, and the left margin to –15 pixels. The bottom
+margin just adds a bit of space between the headline and the paragraph that
+follows. The next trick is the use of negative values for the left and right margins.
+As mentioned on page 156, you can assign a negative margin to any element.
+This property pulls the element out toward the direction of the margin—
+in this case, the headline extends 15 pixels to the left and 15 pixels to the right,
+actually expanding the headline and pulling it out over the body tag’s padding.</P>
+ 		</div>
+ 	</body>
+ </html>

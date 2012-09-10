@@ -1,0 +1,209 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+
+ <html>
+ 	<head>
+ 		<style type="text/css">
+ 			body {
+ 			}
+ 			
+ 			.notes {
+ 				font-family: serif;
+ 				font-size: 14px;
+ 				font-weight: bold;
+ 			}
+ 			
+ 			.notes p {
+ 			
+ 			}
+ 			
+ 			#banner {
+ 				background-color: blue;
+ 				margin-bottom: 10px;
+ 				font-weight: bold;
+ 				font-size: 18px;
+ 			}
+ 			
+ 			#left {
+ 				background-color: blue;
+ 				margin-bottom: 10px;
+ 			}
+ 			
+ 			#right {
+ 				background-color: blue;
+ 				margin-bottom: 10px;
+ 			}
+ 			
+ 			
+ 			#banner2 {
+ 				background-color: blue;
+ 				margin-bottom: 10px;
+ 				font-weight: bold;
+ 				font-size: 18px;
+ 			}
+ 			
+ 			#left2 {
+ 				background-color: blue;
+ 				margin-bottom: 10px;
+ 				float: left;
+ 			}
+ 			
+ 			#right2 {
+ 				background-color: blue;
+ 				margin-bottom: 10px;
+ 				float: right;
+ 			}
+ 			
+ 			#main2 {
+ 				margin-left: 10px;
+ 			}
+ 			
+ 		</style>
+ 		
+ 		<title> CSS and HTML Training! </title>
+ 	</head>
+
+
+ 	<body>
+ 		<div class="notes">
+ 			<p> Finally, floating every column also avoids a 3-pixel bug that
+affects Internet Explorer 6 and earlier (see page 335).</p>
+
+<p>In addition, floating more than just the sidebars lets you change the order of your
+divs in the HTML. </p>
+
+<p> Without the abality to change the oder of HTML elements in the page, the main content
+will always need to be after the less important sidebars. This is bad idea for search engines,
+and for devices that reads the page for the visually impaired since on every page the have to
+read the sidebar info before they get to the content.</p>
+ 		</div>
+ 		<h2>Normal Page Flow</h2>
+ 		<div id="banner">This is my banner!</div>
+ 		<div id="left">
+ 			<strong>This is my left side!</strong>
+ 			<ul>
+ 				<li> Item 1 </li>
+ 				<li> Item 2 </li>
+ 				<li> Item 3 </li>
+ 			</ul>
+ 		</div>
+ 		<div id="right">
+ 			<strong>This is my right side!</strong>
+ 			<ul>
+ 				<li> Item A </li>
+ 				<li> Item B </li>
+ 				<li> Item C </li>
+ 			</ul>
+ 		</div>
+ 		<div id="main">
+ 			<strong>This is my Main Content!</strong>
+ 			<p> 
+ 				It’s perfectly possible to float every column, not just the left and right sidebars. You
+could float the first sidebar to the left, the middle column to the left, and the right
+sidebar to the right, as shown in Figure 12-2, top. This approach lets you put more
+than three columns in your design.
+ 			</p>
+ 		</div>
+ 		
+ 		<h2>Using Floats</h2>
+ 		<div id="banner2">This is my banner!</div>
+ 		<div id="left2">
+ 			<strong>This is my left side!</strong>
+ 			<ul>
+ 				<li> Item 1 </li>
+ 				<li> Item 2 </li>
+ 				<li> Item 3 </li>
+ 			</ul>
+ 		</div>
+ 		<div id="right2">
+ 			<strong>This is my right side!</strong>
+ 			<ul>
+ 				<li> Item A </li>
+ 				<li> Item B </li>
+ 				<li> Item C </li>
+ 			</ul>
+ 		</div>
+ 		<div id="main">
+ 			<strong>This is my Main Content!</strong>
+ 			<p> 
+ 				It’s perfectly possible to float every column, not just the left and right sidebars. You
+could float the first sidebar to the left, the middle column to the left, and the right
+sidebar to the right, as shown in Figure 12-2, top. This approach lets you put more
+than three columns in your design.
+ 			</p>
+ 		</div>
+ 		
+ 		
+ 	<!--  -->	
+ 		<h2 style="margin-top: 50px;">Using Floats - With main content appearing between the sidebars in the HTML </h2>
+ 		<p> <strong>Note:</strong> Without setting the width of the main content, the right side would have been pushed down. This is because
+ 		the total width of all the columns would be bigger that the containing box (in the case the window)</p>
+ 		<div id="banner2">This is my banner!</div>
+ 		
+ 		<div  style="float:left">
+ 			<strong>This is my left side!</strong>
+ 			<ul>
+ 				<li> Item 1 </li>
+ 				<li> Item 2 </li>
+ 				<li> Item 3 </li>
+ 			</ul>
+ 		</div>
+ 		<div style="float:left; width: 600px;margin-left: 20px;">
+ 			<strong>This is my Main Content!</strong>
+ 			<p> 
+ 				It’s perfectly possible to float every column, not just the left and right sidebars. You
+could float the first sidebar to the left, the middle column to the left, and the right
+sidebar to the right, as shown in Figure 12-2, top. This approach lets you put more
+than three columns in your design.
+ 			</p>
+ 		</div>
+ 		<div  style="float:right">
+ 			<strong>This is my right side!</strong>
+ 			<ul>
+ 				<li> Item A </li>
+ 				<li> Item B </li>
+ 				<li> Item C </li>
+ 			</ul>
+ 		</div>
+ 		
+ 		
+ 		
+ 		<!--  -->
+ 		<h2 style="margin-top: 150px; clear: both;">Using Floats Within Floats - With main content appearing before the sidebars in the HTML </h2>
+ 		<div class="notes">
+ 			<p> Note: We need to use the <strong>clear</strong> property so that this following element
+ 			is not affected by the floated element above it</p>
+ 		</div>
+ 		<div id="banner2">This is my banner!</div>
+ 		<div style="float:left">
+ 		
+ 			<div style="float:right; width: 600px; margin-left: 50px;">
+ 			<strong>This is my Main Content!</strong>
+ 			<p> 
+ 				It’s perfectly possible to float every column, not just the left and right sidebars. You
+could float the first sidebar to the left, the middle column to the left, and the right
+sidebar to the right, as shown in Figure 12-2, top. This approach lets you put more
+than three columns in your design.
+ 			</p>
+ 		</div>
+ 			<div  style="float:left">
+ 				<strong>This is my left side!</strong>
+ 				<ul>
+ 					<li> Item 1 </li>
+ 					<li> Item 2 </li>
+ 					<li> Item 3 </li>
+ 				</ul>
+ 			</div>
+ 		</div>
+ 		<div  style="float:right">
+ 			<strong>This is my right side!</strong>
+ 			<ul>
+ 				<li> Item A </li>
+ 				<li> Item B </li>
+ 				<li> Item C </li>
+ 			</ul>
+ 		</div>
+ 		
+ 		
+ 		
+ 	</body>
+ </html>

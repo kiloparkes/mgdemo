@@ -1,0 +1,279 @@
+/*
+A block-level tag creates a break before and after it. The <p> tag, for example, creates
+a block that’s separated from tags above and below. Headlines, <div> tags, tables
+and lists are other examples of block-level tags.
+Inline tags don’t create a break before or after them. They appear on the same line
+as the content and tags beside them.
+
+Other inline tags are <img> for adding images,
+<a> for creating links,
+
+
+In most cases, CSS works the same for inline boxes and block boxes. You can style
+the font, color, and background and add borders to both types of boxes. However,
+when it comes to margins and padding, browsers treat inline boxes differently.
+
+While you can add space to the left or right of an inline element using either left or
+right padding or left or right margins, you can’t increase the height of the inline
+element with top or bottom padding or margins.
+*/
+
+/*
+height
+width
+
+in %, em or pixels
+px - an exact width or height that doesn’t change.
+em - An em is the same as the text size for the styled element. If text-size = 2px
+	and height/width = 2em, them this is 4px;
+% - the width property, percentage values are based on the percentage of the width
+of the style’s containing element.
+*/
+
+
+/*
+
+Calculating a Box’s Actual Width and Height
+
+The width and height properties set
+the width and height of the content area of the style—the place where the text,
+images, or other nested tags sit.  The actual width—that is, the amount
+of screen real estate given by the web browser—is the total of the widths of the
+margins, borders, padding, and width properties.
+
+The general rule of thumb for setting heights on page elements is don’t! When more text than fits into the
+100 pixel height is added to the box,
+
+In other words, the height property is useful for controlling the height of a div containing
+images, for example, because you can correctly determine the height of the
+images;
+
+
+Floats:
+
+With floats content below the floated element moves up and wraps around the float
+*/
+
+body {
+background-color: #CDE6FF;
+background-image: url(bg.png);
+background-repeat: repeat-x;
+/* background-repeat tells the browser to repeat the image width-wise, length-wise, both ways or not-at-all. 
+ repeat-x => width-wise, repeat-y=> length-wise. In this case width-wise */
+padding-top: 30px; 
+/* padding-top: Tells the browser that the body content should start 30px from to of window */
+}
+
+p {
+font-family: "Palatino Linotype", Baskerville, serif;
+color: white;
+line-height: 150%;
+margin-top: 10px;
+margin-left: 80px;
+}
+
+
+h2 {
+color: #B1967C;
+font-weight: normal;
+font-family: "Palatino Linotype", Baskerville, serif;
+font-size: 2.2em;
+border-bottom: 2px white solid;
+background: url(bullet.png) no-repeat;
+padding: 0 0 2px 40px;
+margin: 0;
+}
+
+
+.intro {
+color: #6A94CC;
+font-family: Arial, Helvetica, sans-serif;
+font-size: 1.2em;
+margin-left: 0;
+margin-bottom: 25px;
+}
+
+/* .intro is an example of CSS class selector. It allows us to select which tags we 
+want to apply a particular style to. This is unlike the HTML tag selector where styles  
+are applied to all instances of a particular HTML tag. 
+
+For example, if we want to format some <p> tags differently, we could mark those <p> 
+tags with the intro class. This would look like: <p class="intro"/> 
+
+*/
+
+
+div p {
+	color:black;
+}
+
+/*
+ This is an example of descendant selector. It tells the browser that all <p> tags
+ within a <div> tags should be black. This is like using the class selector to limit
+ the tags which are affected.
+*/
+
+
+p a {color: red;}
+
+p.intro a {  /* formats links within a intro classified paragraph */
+	color: orange;
+}
+
+
+p .intro a { /* formats links within any intro classified element that is inside a <p> tag.*/
+	color: maroon;
+}
+
+span  {
+	font-size: 11px;
+	color: black;
+	font-weight: bold;
+}
+
+.grandpa {
+ 	font-style: oblique;
+ 	border: 2px white solid; /* not inherited */
+}
+
+ul.nav {
+	list-style-type: none;
+	padding-left: 0;
+	margin-left: 0;
+	width: 100px;
+}
+
+/* Since the <a> tag is an inline element, it’s only as wide as the content inside it. 
+ To get around this make it a block type element as follows: 
+ Also top and bottom padding and margins have no effect on inline elements. */
+ul.nav a {
+    background-color: red;
+    margin-top: 5px;
+    display: block; /* change inline to block element */
+}
+
+ul.h-nav li{
+	list-style-type: none;
+	padding-left: 0;
+	margin-left: 0;
+	display: inline; /* To display horizontally, changing the display property of the list items from block to inline.   */
+}
+
+ul.h-nav2 li{
+	list-style-type: none;
+	padding-left: 0;
+	margin-left: 0;
+	display: inline; /* To display horizontally, changing the display property of the list items from block to inline.   */
+}
+
+ul.h-nav2 a{
+	border: 1px dashed #000;
+	border-bottom: none;
+	padding: 5px 15px 5px 15px;
+	margin-right: 5px;
+	background-color: #EAEAEA;
+	text-decoration: none;
+}
+
+
+/* A different way to create navigation is to use floats! */
+/* 
+A drawback to using display:block is that
+Setting a width on either the <li> or <a> tags has no effect, because they’re inline elements.
+*/
+
+/*When you set the width property, it’s a good idea to use em units because they
+scale. That way, the link text won’t get bigger than the buttons if a visitor
+increases the browser’s font size.
+*/
+
+
+ul.navi {
+	margin-left: 0px;
+	padding-left: 0px;
+	list-style: none;
+	border-bottom: 1px dashed #000;
+	overflow: hidden; /* ensures that list text does not 
+	zoom: 1; /* zoom: 1 for IE 6 work-around for overflow*/
+}
+ul.navi li {
+	float: left; /* tells the browser, that instead of showing in the usual top to bottom fashion,
+	to display side by side. */
+}
+
+ul.navi a {
+	width: 12em; /* em is scales */
+	display: block;
+	border: 1px dashed #000;
+	border-bottom: none;
+	padding: 5px;
+	margin-right: 5px;
+	background-color: #EAEAEA;
+	text-decoration:none;
+	color: #333;
+	text-align: center;
+}
+
+
+
+
+/* Using the sliding door technique to make sure that we can use a single background
+image for tab without worrying about having too much space in the tab with the 
+shorter text */
+
+/* it involves
+creating one very wide and tall tab graphic in your image editing program (#2 in
+Figure 9-10), and then slicing that image into two graphic files (#3 in Figure 9-10).
+The very thin graphic is the left edge of the tab. It should be only wide enough to
+reveal the sloping left edge of the tab. The second graphic is very wide—wider than
+you imagine any tab on the page would ever get—and forms the tab’s main body
+and right edge.
+*/
+
+/* a background image never
+extends outside of the box created by its tag. In other words, even though this
+image is really, really wide and tall, you won’t see any part of the graphic that
+extends outside the region of the <li> tag—either below it or outside its left edge.
+*/
+
+
+ul.navi2 {
+	margin-left: 0px;
+	padding-left: 0px;
+	list-style: none;
+	border-bottom: 1px dashed #000; 
+	overflow: hidden; /* ensures that list text does not */
+	zoom: 1; 	/* zoom: 1 for IE 6 work-around for overflow*/
+}
+
+ul.navi2 li {
+	float: left; /* tells the browser, that instead of showing in the usual top to bottom fashion,
+	to display side by side. */
+	background: url(right-tab.gif) no-repeat right top; /* place at top-right corner or <li> tag */
+	display:inline;
+}
+
+ul.navi2 a {
+	float: left;
+	width: 12em; /* em is scales */
+	display: block;
+	padding:5px;
+	margin-right: 1px;
+	background-color: #EAEAEA;
+	text-decoration:none;
+	color: #333;
+	text-align: center;
+	background: url(left-tab.gif) no-repeat left top;
+}
+
+
+
+#side-stripe {
+	/*background: url(top.png) repeat-y;*/
+	background-image: url(top.png);
+    background-repeat: repeat-y;
+    height: 100%;
+    float: left;
+}
+
+

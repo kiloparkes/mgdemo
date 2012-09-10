@@ -1,0 +1,87 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+
+ <html>
+ 	<head>
+ 		<link rel="stylesheet" type="text/css" href="training.css">
+ 		
+ 		<title> CSS and HTML Training! </title>
+ 	</head>
+
+	<div id="sideBar">
+		Hello
+	</div>
+ 	<body>
+ 		<h1> CSS Styles </h1>
+ 		<h2> External Style Sheets</h2>
+ 		<p class="intro"> This is a paragraph selected, using a class selector, to be
+ 		styled differently from other p tags.</p>
+ 		<h2> Internal Styles  </h2>
+ 		<p> This is a paragraph without styling. </p>
+ 		
+ 		<div>
+ 			<p> This is a Descendant paragraph that descends from a  tag!! Using a descendant selector we have selected this p tag and any other within
+ 			a  tag to be styled differently from other p tags. This approach
+ 			is an ALTENATIVE to using a class selector </p>
+ 		</div>
+ 		
+ 		<a href=""> This is a link!</a>
+ 		
+ 		<p>
+ 			<a href=""> This is a link within a paragraph!. A DESCENDANT LINK! <span> CSS: p a {color: red;}</span></a>
+ 		</p>
+ 		
+ 		<p class="intro">
+ 			<a href=""> This is a link within a class-selected 'paragraph!. <span>CSS: p.intro a {color: orange;}</span></a>
+ 		</p>
+ 		
+ 		<p>
+ 		<strong class="intro">
+ 			<a href=""> This is a link within a class-selected "strong" tag, which is
+ 			within a "p" tag. <span>CSS: p .intro a {color: maroon;}</span></a>
+ 		</strong>
+ 		</p>
+ 		
+ 		<div class="grandpa">
+ 			<p> 
+ 				This paragraph is inside a class styled div.
+ 				<em>The section of text is inside a em tag inside the p tag.</em>
+ 				Both the text in the p tag (father) and that in the em  tag (child)
+ 				inherit the font-style from the parent of the p tag.
+ 				
+ 				<strong>
+ 				Note: That not all styles can be inherited. background colors, margins, borders, and
+ 				element placement styles are not inherited. </strong>
+ 			</p>
+ 		</div>
+ 		
+ 		<ul class="nav">
+			<li><a href="index.html">Home</a></li>
+			<li><a href="news.html">News</a></li>
+			<li><a href="reviews.html">Reviews</a></li>
+		</ul>
+
+		<ul class="h-nav">
+			<li><a href="index.html">Home</a></li>
+			<li><a href="news.html">News</a></li>
+			<li><a href="reviews.html">Reviews</a></li>
+		</ul>
+		
+		<ul class="h-nav2">
+			<li><a href="index.html">Home</a></li>
+			<li><a href="news.html">News</a></li>
+			<li><a href="reviews.html">Reviews</a></li>
+		</ul>
+		
+		<ul class="navi">
+			<li><a href="index.html">Home</a></li>
+			<li><a href="news.html">News</a></li>
+			<li><a href="reviews.html">Reviews</a></li>
+		</ul>
+		
+		<ul class="navi2">
+			<li><a href="index.html">Home</a></li>
+			<li><a href="news.html">News</a></li>
+			<li><a href="reviews.html">Reviews</a></li>
+		</ul>
+ 	</body>
+ </html>
