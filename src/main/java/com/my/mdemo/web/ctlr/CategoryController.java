@@ -84,6 +84,8 @@ public class CategoryController {
 			// This is a leaf category... Only leaf categories can contain tones
 			PagedView<Tone> p = new PagedView<Tone>("/category/search");
 			int cnt = toneService.getTonesOfCategoryCount(id);
+			
+			
 			p.getNavInfo().setRowCount(cnt);
 			String page = (String)request.getParameter("page");
 			if (null == page){
@@ -150,6 +152,7 @@ public class CategoryController {
 		model.addAttribute("displayPaging", isPaging);
 		model.addAttribute("category", c);
 		model.addAttribute("pagedInfo", p);
+		model.addAttribute("displayTrail", true);
 		return "categoriesPage";
 	}
 	

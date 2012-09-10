@@ -142,8 +142,9 @@ table.items {
 	color: blue;
 }
 
-#info #resultInfo {
-	padding-bottom: 20px;
+
+#resultInfo {
+	padding-bottom: 10px;
 }
 
 #resultInfo a {
@@ -163,6 +164,12 @@ table.items {
 	when the main content is higher up on the page that the bottom of the side bar. The footer 
 	would float up under the main content block, unless I clear floating */
 	clear: both;
+}
+
+/*++++++++++++++++++++++++++++++++++++++++++++++++++++  */
+.ul {
+	text-align: left;
+	line-height: 10px;
 }
 
 

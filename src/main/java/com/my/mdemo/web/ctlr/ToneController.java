@@ -17,7 +17,7 @@ public class ToneController {
 			
 		Map<Object, Object> model = new HashMap<Object, Object>();
 		
-		PagedView<Tone> pcustv = new PagedView<Tone>("");
+		PagedView<Tone> pcustv = new PagedView<Tone>();
 		
 		 
 		

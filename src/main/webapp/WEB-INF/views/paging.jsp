@@ -3,7 +3,15 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 
-	Page:
+	<c:choose>
+		<c:when test="${fn:length(pagedInfo.items) < 1}">
+			No results found!
+		</c:when>
+		<c:otherwise>
+			Page:
+		</c:otherwise>
+	</c:choose>
+	
 	<!-- 
 	<c:if test="${!pagedInfo.navInfo.firstPage}">
 		<a href="newcustlist.htm?page=0">First</a>&nbsp;

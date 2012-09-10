@@ -10,8 +10,11 @@ public class PagedView<E> {
 
 	private List<E> items;
 	
-	private String url;
+	private String url = "";
 
+	
+	public PagedView() {
+	}
 	
 	public PagedView(String url) {
 		this.url = url;
